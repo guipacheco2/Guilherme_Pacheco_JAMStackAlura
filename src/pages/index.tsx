@@ -1,59 +1,102 @@
 import React from 'react'
-
-const Card = DummyComponent
-const CardImage = DummyComponent
-const CardList = DummyComponent
-const CardText = DummyComponent
-const CardTitle = DummyComponent
-const Footer = DummyComponent
-const Header = DummyComponent
-const Link = DummyComponent
-const Logo = DummyComponent
-const Menu = DummyComponent
-const MenuSpacer = DummyComponent
-const Page = DummyComponent
-const Section = DummyComponent
-const SectionTitle = DummyComponent
-const SocialMediaIcon = DummyComponent
-
-function DummyComponent({
-  children,
-}: {
-  featured?: boolean
-  children?: React.ReactNode
-}): JSX.Element {
-  return <div>{children}</div>
-}
+import {
+  Card,
+  CardImage,
+  CardList,
+  CardText,
+  CardTitle,
+  Footer,
+  Header,
+  HeaderCover,
+  Logo,
+  Menu,
+  MenuItem,
+  MenuSpacer,
+  Page,
+  Section,
+  SectionTitle,
+  SocialMediaIcon,
+  Typography,
+} from '../components'
 
 export default function HomePage(): JSX.Element {
   return (
     <Page>
       <Header>
-        <Menu>
-          <Logo />
+        <HeaderCover>
+          <Typography
+            onColor="primary"
+            as="h1"
+            variant="headline1"
+            textAlign="center"
+          >
+            Guilherme Pacheco
+          </Typography>
+          <Typography
+            onColor="primary"
+            as="h2"
+            variant="headline2"
+            textAlign="center"
+          >
+            Portfólio
+          </Typography>
+        </HeaderCover>
+
+        <Menu size="normal">
+          <MenuItem>
+            <a>
+              <Logo />
+            </a>
+          </MenuItem>
           <MenuSpacer />
-          <Link>Sobre mim</Link>
-          <Link>Contato</Link>
+          <MenuItem>
+            <Typography as="a" onColor="primary" variant="button">
+              Sobre mim
+            </Typography>
+          </MenuItem>
+          <MenuItem>
+            <Typography as="a" onColor="primary" variant="button">
+              Contato
+            </Typography>
+          </MenuItem>
         </Menu>
       </Header>
 
       <Section>
-        <SectionTitle>Meus projetos</SectionTitle>
+        <SectionTitle>
+          <Typography onColor="background" as="h3" variant="headline3">
+            Meus projetos
+          </Typography>
+        </SectionTitle>
 
         <CardList>
           <Card featured={false}>
             <CardImage />
-            <CardTitle>Projeto Report</CardTitle>
-            <CardText>Lorem</CardText>
+            <CardTitle>
+              <Typography onColor="surface" as="h6" variant="headline6">
+                Projeto Report
+              </Typography>
+            </CardTitle>
+            <CardText>
+              <Typography onColor="surface" as="p" variant="bodyText1">
+                Lorem
+              </Typography>
+            </CardText>
           </Card>
         </CardList>
       </Section>
 
       <Footer>
-        <Menu>
-          <SocialMediaIcon />
-          <SocialMediaIcon />
-          <SocialMediaIcon />
+        <Menu size="small">
+          <MenuItem>
+            <SocialMediaIcon />
+          </MenuItem>
+          <MenuItem>
+            <SocialMediaIcon />
+          </MenuItem>
+          <MenuItem>
+            <SocialMediaIcon />
+          </MenuItem>
         </Menu>
       </Footer>
     </Page>

@@ -1,5 +1,76 @@
 // https://material.io/design/typography/the-type-system.html#type-scale
-export const typographyVariants = {
+
+import { CSSProperties } from 'styled-components'
+
+export interface TypographyVariants {
+  headline1: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  headline2: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  headline3: {
+    fontSize: number
+    fontWeight: number
+  }
+  headline4: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  headline5: {
+    fontSize: number
+    fontWeight: number
+  }
+  headline6: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  subtitle1: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  subtitle2: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  bodyText1: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  bodyText2: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  button: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+    textTransform: CSSProperties['textTransform']
+  }
+  caption: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+  }
+  overline: {
+    fontSize: number
+    fontWeight: number
+    letterSpacing: number
+    textTransform: CSSProperties['textTransform']
+  }
+}
+
+export const typographyVariants: TypographyVariants = {
   headline1: {
     fontSize: 96,
     fontWeight: 300,
@@ -52,6 +123,7 @@ export const typographyVariants = {
     fontSize: 14,
     fontWeight: 500,
     letterSpacing: 1.25,
+    textTransform: 'uppercase',
   },
   caption: {
     fontSize: 12,
@@ -62,7 +134,8 @@ export const typographyVariants = {
     fontSize: 10,
     fontWeight: 400,
     letterSpacing: 1.5,
+    textTransform: 'uppercase',
   },
 }
 
-export type TypographyVariants = typeof typographyVariants
+export type TypographyVariantKeys = keyof TypographyVariants
