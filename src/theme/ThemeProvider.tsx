@@ -1,8 +1,7 @@
 import React from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import { createTheme } from './createTheme'
 import { GlobalStyle } from './GlobalStyle'
-
-const theme = {}
 
 export interface ThemeProviderProps {
   children: React.ReactNode
@@ -10,7 +9,7 @@ export interface ThemeProviderProps {
 
 export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   return (
-    <StyledThemeProvider theme={theme}>
+    <StyledThemeProvider theme={createTheme()}>
       <GlobalStyle />
       {children}
     </StyledThemeProvider>
