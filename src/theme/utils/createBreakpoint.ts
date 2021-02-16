@@ -4,9 +4,9 @@ import {
   SimpleInterpolation,
   ThemeProps,
 } from 'styled-components'
-import { Breakpoints } from '../breakpoints'
+import { BreakpointKeys } from '../breakpoints'
 
-export type ResponsiveBreakpoints<T> = T | Partial<Record<Breakpoints, T>>
+export type ResponsiveBreakpoints<T> = T | Partial<Record<BreakpointKeys, T>>
 
 type Styled =
   | SimpleInterpolation

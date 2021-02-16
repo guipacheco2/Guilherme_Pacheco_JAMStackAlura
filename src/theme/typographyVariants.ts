@@ -2,73 +2,32 @@
 
 import { CSSProperties } from 'styled-components'
 
-export interface TypographyVariants {
-  headline1: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  headline2: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  headline3: {
-    fontSize: number
-    fontWeight: number
-  }
-  headline4: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  headline5: {
-    fontSize: number
-    fontWeight: number
-  }
-  headline6: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  subtitle1: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  subtitle2: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  bodyText1: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  bodyText2: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  button: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-    textTransform: CSSProperties['textTransform']
-  }
-  caption: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-  }
-  overline: {
-    fontSize: number
-    fontWeight: number
-    letterSpacing: number
-    textTransform: CSSProperties['textTransform']
-  }
+type TypographyVariant = {
+  fontSize: number
+  fontWeight: number
+  letterSpacing?: number
+  textTransform?: CSSProperties['textTransform']
 }
+
+export type TypographyVariantKeys =
+  | 'headline1'
+  | 'headline2'
+  | 'headline3'
+  | 'headline4'
+  | 'headline5'
+  | 'headline6'
+  | 'subtitle1'
+  | 'subtitle2'
+  | 'bodyText1'
+  | 'bodyText2'
+  | 'button'
+  | 'caption'
+  | 'overline'
+
+export type TypographyVariants = Record<
+  TypographyVariantKeys,
+  TypographyVariant
+>
 
 export const typographyVariants: TypographyVariants = {
   headline1: {
@@ -137,5 +96,3 @@ export const typographyVariants: TypographyVariants = {
     textTransform: 'uppercase',
   },
 }
-
-export type TypographyVariantKeys = keyof TypographyVariants

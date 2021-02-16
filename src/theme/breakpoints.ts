@@ -1,5 +1,9 @@
+export type BreakpointKeys = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+export type Breakpoints = Record<BreakpointKeys, number>
+
 // https://material.io/design/layout/responsive-layout-grid.html#breakpoints
-export const breakpoints = {
+export const breakpoints: Breakpoints = {
   xs: 0,
   sm: 600,
   md: 1024,
@@ -7,6 +11,4 @@ export const breakpoints = {
   xl: 1920,
 }
 
-export type Breakpoints = keyof typeof breakpoints
-
-export const breakpointNames = Object.keys(breakpoints) as Breakpoints[]
+export const breakpointNames = Object.keys(breakpoints) as BreakpointKeys[]

@@ -1,10 +1,8 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { breakpointNames, breakpoints } from '../breakpoints'
+import { BreakpointKeys, breakpointNames, breakpoints } from '../breakpoints'
 
 export function breakpointsMedia(
-  cssByBreakpoint: Partial<
-    Record<keyof typeof breakpoints, FlattenSimpleInterpolation>
-  >,
+  cssByBreakpoint: Partial<Record<BreakpointKeys, FlattenSimpleInterpolation>>,
 ): FlattenSimpleInterpolation[] {
   return breakpointNames
     .filter((breakpointName) => Boolean(cssByBreakpoint[breakpointName]))

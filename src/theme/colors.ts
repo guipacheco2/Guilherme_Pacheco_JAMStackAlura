@@ -1,6 +1,17 @@
 // https://material.io/design/color/the-color-system.html
 
-export const light = {
+type Color = {
+  light?: string
+  main: string
+  dark?: string
+  contrastText: string
+}
+
+export type ColorKeys = 'primary' | 'secondary' | 'background' | 'surface'
+
+export type Colors = Record<ColorKeys, Color>
+
+export const light: Colors = {
   // A primary color is the color displayed most frequently across your app's screens and components.
   primary: {
     light: '#8EACBB',
@@ -32,7 +43,3 @@ export const light = {
     contrastText: '#34515E',
   },
 }
-
-export type Colors = typeof light
-
-export type ColorKeys = keyof Colors
