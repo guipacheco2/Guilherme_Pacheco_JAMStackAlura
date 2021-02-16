@@ -9,10 +9,10 @@ const StyledFooter = styled.div(({ theme }) => {
   })
 })
 
-export function Footer({
-  children,
-}: {
+interface FooterProps {
   children?: React.ReactNode
-}): JSX.Element {
+}
+
+export function Footer({ children }: FooterProps): JSX.Element {
   return <StyledFooter>{children}</StyledFooter>
 }

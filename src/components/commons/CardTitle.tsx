@@ -1,9 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export function CardTitle({
-  children,
-}: {
+const StyledCardTitle = styled.div`
+  padding: 8px;
+`
+
+interface CardTitleProps {
   children?: React.ReactNode
-}): JSX.Element {
-  return <div>{children}</div>
+}
+
+export function CardTitle({ children }: CardTitleProps): JSX.Element {
+  return <StyledCardTitle>{children}</StyledCardTitle>
 }

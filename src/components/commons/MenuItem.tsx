@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const StyledMenuItem = styled.a(() => {
+const StyledMenuItem = styled.div(() => {
   return css({
-    padding: '16px',
+    padding: '12px',
   })
 })
 

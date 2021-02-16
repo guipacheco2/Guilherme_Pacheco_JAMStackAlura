@@ -5,13 +5,16 @@ const StyledHeaderCover = styled.div(({ theme }) => {
   return css({
     height: '472px',
     backgroundColor: theme.colors.primary.main,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   })
 })
 
-export function HeaderCover({
-  children,
-}: {
+interface HeaderCoverProps {
   children?: React.ReactNode
-}): JSX.Element {
+}
+
+export function HeaderCover({ children }: HeaderCoverProps): JSX.Element {
   return <StyledHeaderCover>{children}</StyledHeaderCover>
 }

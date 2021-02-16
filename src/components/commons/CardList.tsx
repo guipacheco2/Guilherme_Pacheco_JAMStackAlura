@@ -1,9 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export function CardList({
-  children,
-}: {
+const StyledCardList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+interface CardListProps {
   children?: React.ReactNode
-}): JSX.Element {
-  return <div>{children}</div>
+}
+
+export function CardList({ children }: CardListProps): JSX.Element {
+  return <StyledCardList>{children}</StyledCardList>
 }

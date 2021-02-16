@@ -10,10 +10,10 @@ const StyledPage = styled.div(() => {
   })
 })
 
-export function Page({
-  children,
-}: {
+interface PageProps {
   children?: React.ReactNode
-}): JSX.Element {
+}
+
+export function Page({ children }: PageProps): JSX.Element {
   return <StyledPage>{children}</StyledPage>
 }

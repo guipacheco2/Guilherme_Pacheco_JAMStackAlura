@@ -1,9 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export function SectionTitle({
-  children,
-}: {
+const StyledSectionTitle = styled.div`
+  padding: 32px;
+`
+
+interface SectionTitleProps {
   children?: React.ReactNode
-}): JSX.Element {
-  return <div>{children}</div>
+}
+
+export function SectionTitle({ children }: SectionTitleProps): JSX.Element {
+  return <StyledSectionTitle>{children}</StyledSectionTitle>
 }

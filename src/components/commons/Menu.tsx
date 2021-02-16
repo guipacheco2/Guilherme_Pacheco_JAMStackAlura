@@ -11,7 +11,6 @@ const StyledMenu = styled.div<StyledMenuProps>(({ size, theme }) => {
     backgroundColor: theme.colors.primary.dark,
     display: 'flex',
     alignItems: 'center',
-    padding: '8px',
   })
 })
 

@@ -8,10 +8,10 @@ const StyledHeader = styled.div(() => {
   })
 })
 
-export function Header({
-  children,
-}: {
+interface HeaderProps {
   children?: React.ReactNode
-}): JSX.Element {
+}
+
+export function Header({ children }: HeaderProps): JSX.Element {
   return <StyledHeader>{children}</StyledHeader>
 }

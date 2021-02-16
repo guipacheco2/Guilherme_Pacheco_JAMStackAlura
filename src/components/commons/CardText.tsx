@@ -1,9 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export function CardText({
-  children,
-}: {
+const StyledCardText = styled.div`
+  padding: 8px;
+`
+
+interface CardTextProps {
   children?: React.ReactNode
-}): JSX.Element {
-  return <div>{children}</div>
+}
+
+export function CardText({ children }: CardTextProps): JSX.Element {
+  return <StyledCardText>{children}</StyledCardText>
 }
