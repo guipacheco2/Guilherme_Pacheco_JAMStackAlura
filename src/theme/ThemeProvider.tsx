@@ -1,5 +1,9 @@
 import React from 'react'
-import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import {
+  ColorSchemaContextProvider,
+  useColorSchema,
+} from './ColorSchemaContext'
 import { createTheme } from './createTheme'
 import { GlobalStyle } from './GlobalStyle'
 
@@ -7,11 +11,28 @@ export interface ThemeProviderProps {
   children: React.ReactNode
 }
 
-export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
+function ThemeProviderWithColorMode({
+  children,
+}: ThemeProviderProps): JSX.Element {
+  const colorSchema = useColorSchema()
+
   return (
-    <StyledThemeProvider theme={createTheme()}>
+    <ThemeProvider theme={createTheme(colorSchema)}>
       <GlobalStyle />
       {children}
-    </StyledThemeProvider>
+    </ThemeProvider>
+  )
+}
+
+export function CustomThemeProvider({
+  children,
+}: ThemeProviderProps): JSX.Element {
+  return (
+    <ColorSchemaContextProvider>
+      <ThemeProviderWithColorMode>
+        <GlobalStyle />
+        {children}
+      </ThemeProviderWithColorMode>
+    </ColorSchemaContextProvider>
   )
 }

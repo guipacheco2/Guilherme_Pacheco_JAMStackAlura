@@ -1,3 +1,5 @@
+export * from './BrightnessDarkIcon'
+export * from './BrightnessLightIcon'
 export * from './GithubIcon'
 export * from './LinkedInIcon'
 export * from './TwitterIcon'

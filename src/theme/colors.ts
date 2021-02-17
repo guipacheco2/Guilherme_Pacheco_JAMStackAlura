@@ -43,3 +43,28 @@ export const light: Colors = {
     contrastText: '#34515E',
   },
 }
+
+// TODO: Use semi-transparent overlay
+// https://material.io/design/color/dark-theme.html#properties
+export const dark: Colors = {
+  primary: {
+    light: '#282130',
+    main: '#1e1a23',
+    dark: '#2b2234',
+    contrastText: '#DBDBDC',
+  },
+  secondary: {
+    light: '#03DAC6',
+    main: '#03DAC6',
+    dark: '#03DAC6',
+    contrastText: '#DBDBDC',
+  },
+  background: {
+    main: '#121212',
+    contrastText: '#DBDBDC',
+  },
+  surface: {
+    main: '#121212',
+    contrastText: '#DBDBDC',
+  },
+}

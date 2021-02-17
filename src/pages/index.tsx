@@ -11,6 +11,7 @@ import {
   Header,
   HeaderCover,
   HeaderIllustration,
+  IconButton,
   Logo,
   Menu,
   MenuItem,
@@ -20,9 +21,16 @@ import {
   SocialMediaIcon,
   Typography,
 } from '../components'
-import { GithubIcon, LinkedInIcon, TwitterIcon } from '../components/icons'
+import {
+  BrightnessDarkIcon,
+  BrightnessLightIcon,
+  GithubIcon,
+  LinkedInIcon,
+  TwitterIcon,
+} from '../components/icons'
 import { BookshelfIllustration } from '../components/illustrations/BookshelfIllustration'
 import { ProgrammingIllustration } from '../components/illustrations/ProgrammingIllustration'
+import { useColorSchema, useToggleColorSchema } from '../theme'
 
 const projects = [
   { id: 1, title: 'Projeto Report', description: 'Lorem', featured: false },
@@ -32,6 +40,13 @@ const projects = [
 ]
 
 export default function HomePage(): JSX.Element {
+  const toggleColorSchema = useToggleColorSchema()
+  const colorSchema = useColorSchema()
+
+  function handleClickBrightnessButton() {
+    toggleColorSchema()
+  }
+
   return (
     <Page>
       <Header>
@@ -77,6 +92,15 @@ export default function HomePage(): JSX.Element {
               <Typography as="a" onColor="primary" variant="button">
                 Contato
               </Typography>
+            </MenuItem>
+            <MenuItem>
+              <IconButton onClick={handleClickBrightnessButton}>
+                {colorSchema === 'light' ? (
+                  <BrightnessDarkIcon />
+                ) : (
+                  <BrightnessLightIcon />
+                )}
+              </IconButton>
             </MenuItem>
           </GridContainer>
         </Menu>
