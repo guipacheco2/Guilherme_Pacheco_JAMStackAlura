@@ -29,10 +29,7 @@ export function CustomThemeProvider({
 }: ThemeProviderProps): JSX.Element {
   return (
     <ColorSchemaContextProvider>
-      <ThemeProviderWithColorMode>
-        <GlobalStyle />
-        {children}
-      </ThemeProviderWithColorMode>
+      <ThemeProviderWithColorMode>{children}</ThemeProviderWithColorMode>
     </ColorSchemaContextProvider>
   )
 }
