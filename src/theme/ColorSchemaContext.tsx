@@ -21,7 +21,7 @@ export function useToggleColorSchema(): () => void {
 export function ColorSchemaContextProvider({
   children,
 }: ColorSchemaContextProviderProps): JSX.Element {
-  const [mode, setMode] = useState<ColorSchemaTypes>('dark')
+  const [mode, setMode] = useState<ColorSchemaTypes>('light')
 
   const toggle = useCallback(() => {
     setMode((mode) => (mode === 'light' ? 'dark' : 'light'))
