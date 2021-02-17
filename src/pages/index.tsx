@@ -10,6 +10,7 @@ import {
   GridContainer,
   Header,
   HeaderCover,
+  HeaderIllustration,
   Logo,
   Menu,
   MenuItem,
@@ -20,6 +21,8 @@ import {
   Typography,
 } from '../components'
 import { GithubIcon, LinkedInIcon, TwitterIcon } from '../components/icons'
+import { BookshelfIllustration } from '../components/illustrations/BookshelfIllustration'
+import { ProgrammingIllustration } from '../components/illustrations/ProgrammingIllustration'
 
 const projects = [
   { id: 1, title: 'Projeto Report', description: 'Lorem', featured: false },
@@ -33,6 +36,12 @@ export default function HomePage(): JSX.Element {
     <Page>
       <Header>
         <HeaderCover>
+          <HeaderIllustration position="left">
+            <BookshelfIllustration />
+          </HeaderIllustration>
+          <HeaderIllustration position="right">
+            <ProgrammingIllustration />
+          </HeaderIllustration>
           <Typography
             onColor="primary"
             as="h1"

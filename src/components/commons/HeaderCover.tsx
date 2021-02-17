@@ -8,6 +8,7 @@ const StyledHeaderCover = styled.div(({ theme }) => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    position: 'relative',
   })
 })
 
