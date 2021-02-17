@@ -3,7 +3,7 @@
 import { CSSProperties } from 'styled-components'
 
 type TypographyVariant = {
-  fontSize: number
+  fontSize: string
   fontWeight: number
   letterSpacing?: number
   textTransform?: CSSProperties['textTransform']
@@ -31,66 +31,66 @@ export type TypographyVariants = Record<
 
 export const typographyVariants: TypographyVariants = {
   headline1: {
-    fontSize: 96,
+    fontSize: '96px',
     fontWeight: 300,
     letterSpacing: -1.5,
   },
   headline2: {
-    fontSize: 60,
+    fontSize: '60px',
     fontWeight: 300,
     letterSpacing: -0.5,
   },
   headline3: {
-    fontSize: 48,
+    fontSize: '48px',
     fontWeight: 400,
   },
   headline4: {
-    fontSize: 34,
+    fontSize: '34px',
     fontWeight: 400,
     letterSpacing: 0.25,
   },
   headline5: {
-    fontSize: 24,
+    fontSize: '24px',
     fontWeight: 400,
   },
   headline6: {
-    fontSize: 20,
+    fontSize: '20px',
     fontWeight: 500,
     letterSpacing: 0.15,
   },
   subtitle1: {
-    fontSize: 16,
+    fontSize: '16px',
     fontWeight: 400,
     letterSpacing: 0.15,
   },
   subtitle2: {
-    fontSize: 14,
+    fontSize: '14px',
     fontWeight: 500,
     letterSpacing: 0.1,
   },
   bodyText1: {
-    fontSize: 16,
+    fontSize: '16px',
     fontWeight: 400,
     letterSpacing: 0.5,
   },
   bodyText2: {
-    fontSize: 14,
+    fontSize: '14px',
     fontWeight: 400,
     letterSpacing: 0.25,
   },
   button: {
-    fontSize: 14,
+    fontSize: '14px',
     fontWeight: 500,
     letterSpacing: 1.25,
     textTransform: 'uppercase',
   },
   caption: {
-    fontSize: 12,
+    fontSize: '12px',
     fontWeight: 400,
     letterSpacing: 0.4,
   },
   overline: {
-    fontSize: 10,
+    fontSize: '10px',
     fontWeight: 400,
     letterSpacing: 1.5,
     textTransform: 'uppercase',
