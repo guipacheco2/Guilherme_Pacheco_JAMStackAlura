@@ -14,12 +14,12 @@ const StyledImage = styled.img`
   object-fit: cover;
 `
 
-// random image with different sizes
-const src = `https://source.unsplash.com/collection/people/${
-  300 + Math.floor(Math.random() * 100)
-}x${300 + Math.floor(Math.random() * 100)}`
-
 export function CardImage(): JSX.Element {
+  // random image with different sizes
+  const src = `https://source.unsplash.com/collection/people/${
+    300 + Math.floor(Math.random() * 100)
+  }x${300 + Math.floor(Math.random() * 100)}`
+
   return (
     <StyledCardImage>
       <StyledImage src={src} loading="lazy" />
