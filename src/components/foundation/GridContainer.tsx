@@ -9,10 +9,11 @@ import {
 export interface StyledGridContainerProps {
   display?: ResponsiveBreakpoints<CSSProperties['display']>
   marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
+  flex?: ResponsiveBreakpoints<CSSProperties['flex']>
 }
 
 const StyledGridContainer = styled.div<StyledGridContainerProps>(
-  ({ display, marginTop, theme }) => {
+  ({ display, marginTop, flex, theme }) => {
     return css`
       width: 100%;
       margin-right: auto;
@@ -44,7 +45,7 @@ const StyledGridContainer = styled.div<StyledGridContainerProps>(
           padding-left: 24px;
         `,
       })}
-      ${propsToStyle({ display, marginTop })}
+      ${propsToStyle({ display, marginTop, flex })}
     `
   },
 )
@@ -54,12 +55,13 @@ interface GridContainerProps extends StyledGridContainerProps {
 }
 
 export function GridContainer({
+  flex,
   display,
   marginTop,
   children,
 }: GridContainerProps): JSX.Element {
   return (
-    <StyledGridContainer display={display} marginTop={marginTop}>
+    <StyledGridContainer flex={flex} display={display} marginTop={marginTop}>
       {children}
     </StyledGridContainer>
   )

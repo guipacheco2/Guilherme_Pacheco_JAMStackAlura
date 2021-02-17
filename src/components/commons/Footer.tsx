@@ -6,6 +6,7 @@ const StyledFooter = styled.div(({ theme }) => {
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: theme.colors.primary.main,
+    marginTop: 12,
   })
 })
 

@@ -82,7 +82,7 @@ export default function HomePage(): JSX.Element {
         </Menu>
       </Header>
 
-      <GridContainer>
+      <GridContainer flex={1}>
         <SectionTitle>
           <Typography
             onColor="background"
