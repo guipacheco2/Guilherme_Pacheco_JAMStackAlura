@@ -61,7 +61,7 @@ export default function HomePage(): JSX.Element {
         </HeaderCover>
 
         <Menu size="normal">
-          <GridContainer display="flex">
+          <GridContainer alignItems="center" display="flex">
             <MenuItem>
               <a>
                 <Logo />
