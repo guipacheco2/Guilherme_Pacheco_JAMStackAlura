@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <Fragment>
       <Head>
-        <title>Instalura</title>
+        <title>Guilherme Pacheco - Portfólio</title>
 
         <link rel="preconnect" href="https://fonts.gstatic.com" />
 
