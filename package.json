@@ -3,48 +3,65 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "format": "prettier --loglevel warn --write \"**/*.{js,ts,css,md,json}\"",
+    "commit": "cz",
+    "dev": "next",
+    "format:base": "prettier --ignore-path .gitignore --loglevel warn \"**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "format:check": "yarn format:base --check",
+    "format:fix": "yarn format:base --write",
+    "lint:base": "eslint . --ignore-path .gitignore --cache",
+    "lint:check": "yarn lint:base",
+    "lint:fix": "yarn lint:base --fix",
     "start": "next start",
-    "lint": "eslint . --cache --fix"
+    "test:linters": "yarn format:check && yarn lint:check"
   },
   "dependencies": {
-    "next": "10.0.6",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/lodash.get": "^4.4.6",
-    "@types/node": "^14.14.25",
+    "@types/node": "^14.14.31",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "babel-plugin-styled-components": "^1.8.0",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^5.0.9",
+    "husky": "^5.1.1",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test:linters",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md,json}": "prettier --write",
     ".babelrc": "prettier --write"
-  }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "license": "MIT"
 }
