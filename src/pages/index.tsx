@@ -16,10 +16,12 @@ import {
   Menu,
   MenuItem,
   MenuSpacer,
+  Modal,
   Page,
   SectionTitle,
   SocialMediaIcon,
   Typography,
+  useModal,
 } from '../components'
 import {
   BrightnessDarkIcon,
@@ -46,6 +48,12 @@ export default function HomePage(): JSX.Element {
   function handleClickBrightnessButton() {
     toggleColorSchema()
   }
+
+  const [
+    isContactModalOpen,
+    handleOpenContactModal,
+    handleCloseContactModal,
+  ] = useModal()
 
   return (
     <Page>
@@ -148,7 +156,26 @@ export default function HomePage(): JSX.Element {
             )
           })}
         </CardList>
+
+        <div>Entre em contato</div>
+        <button onClick={handleOpenContactModal}>+</button>
       </GridContainer>
+
+      <Modal onClose={handleCloseContactModal} isOpen={isContactModalOpen}>
+        <h1>Envie sua mensagem</h1>
+        <button onClick={console.log}>Close</button>
+
+        <label htmlFor="contactFormNameInput">Seu nome</label>
+        <input id="contactFormNameInput" type="text" />
+
+        <label htmlFor="contactFormEmailInput">Seu email</label>
+        <input id="contactFormEmailInput" type="email" />
+
+        <label htmlFor="contactFormMessageInput">Sua mensagem</label>
+        <textarea id="contactFormMessageInput" />
+
+        <button onClick={console.log}>Enviar</button>
+      </Modal>
 
       <Footer>
         <Menu size="small">
