@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
 const StyledCardImage = styled.div`
@@ -16,9 +16,11 @@ const StyledImage = styled.img`
 
 export function CardImage(): JSX.Element {
   // random image with different sizes
-  const src = `https://source.unsplash.com/collection/people/${
-    300 + Math.floor(Math.random() * 100)
-  }x${300 + Math.floor(Math.random() * 100)}`
+  const src = useMemo(() => {
+    return `https://source.unsplash.com/collection/people/${
+      300 + Math.floor(Math.random() * 100)
+    }x${300 + Math.floor(Math.random() * 100)}`
+  }, [])
 
   return (
     <StyledCardImage>
