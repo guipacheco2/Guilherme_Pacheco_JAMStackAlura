@@ -113,16 +113,8 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
                 <CloseIcon />
               </IconButton>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                flex: 1,
-              }}
-            >
-              {children}
-            </div>
+
+            {children}
           </StyledModalInner>
         </GridContainer>
       </motion.div>

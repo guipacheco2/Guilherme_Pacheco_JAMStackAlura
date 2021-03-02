@@ -8,7 +8,9 @@ import {
   CardText,
   CardTitle,
   Footer,
+  GridCol,
   GridContainer,
+  GridRow,
   Header,
   HeaderCover,
   HeaderIllustration,
@@ -24,18 +26,17 @@ import {
   Typography,
   useModal,
 } from '../components'
-import { TextField } from '../components/forms'
 import {
   AddCircleOutlineIcon,
   BrightnessDarkIcon,
   BrightnessLightIcon,
   GithubIcon,
   LinkedInIcon,
-  SendIcon,
   TwitterIcon,
 } from '../components/icons'
 import { BookshelfIllustration } from '../components/illustrations/BookshelfIllustration'
 import { ProgrammingIllustration } from '../components/illustrations/ProgrammingIllustration'
+import { ContactForm } from '../components/patterns'
 import { useColorSchema, useToggleColorSchema } from '../theme'
 
 const projects = [
@@ -101,9 +102,9 @@ export default function HomePage(): JSX.Element {
               </Typography>
             </MenuItem>
             <MenuItem>
-              <Typography as="a" onColor="primary" variant="button">
+              <Button onColor="primary" onClick={handleOpenContactModal}>
                 Contato
-              </Typography>
+              </Button>
             </MenuItem>
             <MenuItem>
               <IconButton
@@ -164,57 +165,25 @@ export default function HomePage(): JSX.Element {
           })}
         </CardList>
 
-        <Typography variant="headline5" onColor="surface" textAlign="center">
-          Entre em contato
-        </Typography>
-
-        <IconButton onColor="surface" onClick={handleOpenContactModal}>
-          <AddCircleOutlineIcon />
-        </IconButton>
+        <GridRow>
+          <GridCol
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Button
+              onColor="surface"
+              onClick={handleOpenContactModal}
+              endIcon={<AddCircleOutlineIcon />}
+            >
+              Entre em contato
+            </Button>
+          </GridCol>
+        </GridRow>
       </GridContainer>
 
       <Modal onClose={handleCloseContactModal} isOpen={isContactModalOpen}>
-        <Typography variant="headline5" onColor="surface" textAlign="center">
-          Envie sua mensagem
-        </Typography>
-
-        <TextField
-          id="contactFormNameInput"
-          label="Seu nome"
-          placeholder="Seu nome"
-          name="name"
-          value={'userInfo.name'}
-          onChange={() => false}
-        />
-
-        <TextField
-          id="contactFormEmailInput"
-          label="Seu email"
-          placeholder="Seu email"
-          name="email"
-          value={'userInfo.name'}
-          onChange={() => false}
-        />
-
-        <TextField
-          id="contactFormMessageInput"
-          label="Sua mensagem"
-          placeholder="Sua mensagem"
-          name="message"
-          multiline
-          value={'userInfo.name'}
-          onChange={() => false}
-        />
-
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button
-            onColor="surface"
-            onClick={console.log}
-            endIcon={<SendIcon />}
-          >
-            Enviar
-          </Button>
-        </div>
+        <ContactForm />
       </Modal>
 
       <Footer>

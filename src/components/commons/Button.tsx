@@ -43,7 +43,7 @@ export function Button({
         {children}
       </Typography>
 
-      <StyledIcon>{endIcon}</StyledIcon>
+      {endIcon && <StyledIcon>{endIcon}</StyledIcon>}
     </StyledButton>
   )
 }
