@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import React, { useRef, useState } from 'react'
 import styled, { createGlobalStyle, css } from 'styled-components'
+import { GridContainer } from '../foundation'
+import { CloseIcon } from '../icons'
 import { IconButton } from './IconButton'
 
 interface StyledModalProps {
@@ -79,23 +81,33 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
       {isOpen && <StyledLockScroll />}
       <motion.div
         onClick={handleClickOutsideInnerElement}
-        variants={{ open: { x: 0 }, closed: { x: '100%' } }}
+        variants={{ open: { y: 0 }, closed: { y: '100%' } }}
         animate={isOpen ? 'open' : 'closed'}
         transition={{ duration: 0.5 }}
-        style={{ display: 'flex', flex: 1 }}
+        style={{
+          display: 'flex',
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+        }}
       >
-        <div ref={innerElementRef}>
+        <GridContainer maxWidth="sm">
           <div
+            ref={innerElementRef}
             style={{
-              boxShadow: '-10px 0px 24px rgba(7, 12, 14, 0.1)',
+              boxShadow: '0px 1px 25px 5px rgba(0, 0, 0, 0.1)',
+              borderRadius: '10px 10px 0px 0px',
               display: 'flex',
               flexDirection: 'column',
               flex: 1,
-              backgroundColor: 'primary',
+              backgroundColor: '#fff',
+              padding: '16px 16px 48px 16px',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <IconButton onClick={onClose}>x</IconButton>
+              <IconButton onColor="surface" onClick={onClose}>
+                <CloseIcon />
+              </IconButton>
             </div>
             <div
               style={{
@@ -103,13 +115,12 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 flex: 1,
-                padding: '16px', // md: 85px
               }}
             >
               {children}
             </div>
           </div>
-        </div>
+        </GridContainer>
       </motion.div>
     </StyledModal>
   )

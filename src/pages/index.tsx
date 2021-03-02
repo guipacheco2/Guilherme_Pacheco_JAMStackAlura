@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Button,
   Card,
   CardContent,
   CardImage,
@@ -23,11 +24,14 @@ import {
   Typography,
   useModal,
 } from '../components'
+import { TextField } from '../components/forms'
 import {
+  AddCircleOutlineIcon,
   BrightnessDarkIcon,
   BrightnessLightIcon,
   GithubIcon,
   LinkedInIcon,
+  SendIcon,
   TwitterIcon,
 } from '../components/icons'
 import { BookshelfIllustration } from '../components/illustrations/BookshelfIllustration'
@@ -102,7 +106,10 @@ export default function HomePage(): JSX.Element {
               </Typography>
             </MenuItem>
             <MenuItem>
-              <IconButton onClick={handleClickBrightnessButton}>
+              <IconButton
+                onColor="primary"
+                onClick={handleClickBrightnessButton}
+              >
                 {colorSchema === 'light' ? (
                   <BrightnessDarkIcon />
                 ) : (
@@ -157,24 +164,51 @@ export default function HomePage(): JSX.Element {
           })}
         </CardList>
 
-        <div>Entre em contato</div>
-        <button onClick={handleOpenContactModal}>+</button>
+        <Typography variant="headline5" onColor="surface" textAlign="center">
+          Entre em contato
+        </Typography>
+
+        <IconButton onColor="surface" onClick={handleOpenContactModal}>
+          <AddCircleOutlineIcon />
+        </IconButton>
       </GridContainer>
 
       <Modal onClose={handleCloseContactModal} isOpen={isContactModalOpen}>
-        <h1>Envie sua mensagem</h1>
-        <button onClick={console.log}>Close</button>
+        <Typography variant="headline5" onColor="surface" textAlign="center">
+          Envie sua mensagem
+        </Typography>
 
-        <label htmlFor="contactFormNameInput">Seu nome</label>
-        <input id="contactFormNameInput" type="text" />
+        <TextField
+          id="contactFormNameInput"
+          label="Seu nome"
+          placeholder="Seu nome"
+          name="name"
+          value={'userInfo.name'}
+          onChange={() => false}
+        />
 
-        <label htmlFor="contactFormEmailInput">Seu email</label>
-        <input id="contactFormEmailInput" type="email" />
+        <TextField
+          id="contactFormEmailInput"
+          label="Seu email"
+          placeholder="Seu email"
+          name="email"
+          value={'userInfo.name'}
+          onChange={() => false}
+        />
 
-        <label htmlFor="contactFormMessageInput">Sua mensagem</label>
-        <textarea id="contactFormMessageInput" />
+        <TextField
+          id="contactFormMessageInput"
+          label="Sua mensagem"
+          placeholder="Sua mensagem"
+          name="message"
+          multiline
+          value={'userInfo.name'}
+          onChange={() => false}
+        />
 
-        <button onClick={console.log}>Enviar</button>
+        <Button onColor="surface" onClick={console.log} endIcon={<SendIcon />}>
+          Enviar
+        </Button>
       </Modal>
 
       <Footer>
