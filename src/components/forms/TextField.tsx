@@ -1,27 +1,45 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Typography, TypographyPropsGeneric } from '../foundation'
 
 const StyledTextField = styled.div`
   margin: 8px 0;
 `
 
-const StyledInput = styled(Typography)`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.primary.main};
-  padding: 12px 16px;
-  margin: 4px 0;
-  outline: 0;
-` as React.ComponentType<TypographyPropsGeneric<'input'>>
+const StyledInput = styled(Typography)(({ theme }) => {
+  return css`
+    width: 100%;
+    border: 1px solid
+      ${theme.schema === 'light'
+        ? theme.colors.primary.main
+        : theme.colors.primary.contrastText};
+    color: ${theme.colors.surface.contrastText};
+    background-color: ${theme.schema === 'light'
+      ? theme.colors.surface.main
+      : theme.colors.primary.dark};
+    padding: 12px 16px;
+    margin: 4px 0;
+    outline: 0;
+  `
+}) as React.ComponentType<TypographyPropsGeneric<'input'>>
 
-const StyledTextArea = styled(Typography)`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.primary.main};
-  padding: 12px 16px;
-  margin: 4px 0;
-  outline: 0;
-  resize: none;
-` as React.ComponentType<TypographyPropsGeneric<'textarea'>>
+const StyledTextArea = styled(Typography)(({ theme }) => {
+  return css`
+    width: 100%;
+    border: 1px solid
+      ${theme.schema === 'light'
+        ? theme.colors.primary.main
+        : theme.colors.primary.contrastText};
+    color: ${theme.colors.surface.contrastText};
+    background-color: ${theme.schema === 'light'
+      ? theme.colors.surface.main
+      : theme.colors.primary.dark};
+    padding: 12px 16px;
+    margin: 4px 0;
+    outline: 0;
+    resize: none;
+  `
+}) as React.ComponentType<TypographyPropsGeneric<'textarea'>>
 
 interface TextFieldProps {
   id: string

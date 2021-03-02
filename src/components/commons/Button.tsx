@@ -3,11 +3,12 @@ import styled, { css } from 'styled-components'
 import { ColorKeys } from '../../theme'
 import { Typography } from '../foundation'
 
-const StyledIcon = styled.div(() => {
+const StyledIcon = styled.div(({ theme }) => {
   return css`
     width: 24px;
     height: 24px;
     margin: 0 8px;
+    color: ${theme.colors.surface.contrastText};
   `
 })
 
@@ -18,7 +19,6 @@ const StyledButton = styled.button(() => {
     outline: none;
     cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: 4px;
   `

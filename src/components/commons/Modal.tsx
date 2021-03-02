@@ -5,6 +5,21 @@ import { GridContainer } from '../foundation'
 import { CloseIcon } from '../icons'
 import { IconButton } from './IconButton'
 
+const StyledModalInner = styled.div(({ theme }) => {
+  return css`
+    box-shadow: 0px 1px 25px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #fff;
+    padding: 16px 16px 48px 16px;
+    background-color: ${theme.schema === 'light'
+      ? theme.colors.surface.main
+      : theme.colors.primary.dark};
+  `
+})
+
 interface StyledModalProps {
   isOpen: boolean
 }
@@ -13,7 +28,7 @@ const StyledModal = styled.div<StyledModalProps>`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 100;
   top: 0;
@@ -92,18 +107,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
         }}
       >
         <GridContainer maxWidth="sm">
-          <div
-            ref={innerElementRef}
-            style={{
-              boxShadow: '0px 1px 25px 5px rgba(0, 0, 0, 0.1)',
-              borderRadius: '10px 10px 0px 0px',
-              display: 'flex',
-              flexDirection: 'column',
-              flex: 1,
-              backgroundColor: '#fff',
-              padding: '16px 16px 48px 16px',
-            }}
-          >
+          <StyledModalInner ref={innerElementRef}>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <IconButton onColor="surface" onClick={onClose}>
                 <CloseIcon />
@@ -119,7 +123,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
             >
               {children}
             </div>
-          </div>
+          </StyledModalInner>
         </GridContainer>
       </motion.div>
     </StyledModal>

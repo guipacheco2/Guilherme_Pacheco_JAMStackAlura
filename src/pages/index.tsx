@@ -206,9 +206,15 @@ export default function HomePage(): JSX.Element {
           onChange={() => false}
         />
 
-        <Button onColor="surface" onClick={console.log} endIcon={<SendIcon />}>
-          Enviar
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button
+            onColor="surface"
+            onClick={console.log}
+            endIcon={<SendIcon />}
+          >
+            Enviar
+          </Button>
+        </div>
       </Modal>
 
       <Footer>
