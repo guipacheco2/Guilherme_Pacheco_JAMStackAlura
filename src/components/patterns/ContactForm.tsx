@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { ErrorAnimation } from '../animations'
 import { SuccessAnimation } from '../animations/SuccessAnimation'
-import { Button } from '../commons'
+import { Button, Flex } from '../commons'
 import { TextField } from '../forms'
 import { Typography } from '../foundation'
 import { SendIcon } from '../icons'
@@ -118,20 +118,15 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
           Mensagem enviada com sucesso!
         </Typography>
 
-        <div
-          style={{
-            justifyContent: 'center',
-            display: 'flex',
-          }}
-        >
+        <Flex justifyContent="center">
           <SuccessAnimation />
-        </div>
+        </Flex>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Flex justifyContent="center">
           <Button onColor="surface" type="button" onClick={onExit}>
             Fechar
           </Button>
-        </div>
+        </Flex>
       </StyledContactForm>
     )
   }
@@ -143,20 +138,15 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
           Falha ao enviar mensagem.
         </Typography>
 
-        <div
-          style={{
-            justifyContent: 'center',
-            display: 'flex',
-          }}
-        >
+        <Flex justifyContent="center">
           <ErrorAnimation />
-        </div>
+        </Flex>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Flex justifyContent="center">
           <Button onColor="surface" type="button" onClick={resetFormState}>
             Voltar
           </Button>
-        </div>
+        </Flex>
       </StyledContactForm>
     )
   }
@@ -192,7 +182,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         value={contactInfo.message}
         onChange={handleChange}
       />
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Flex justifyContent="center">
         <Button
           onColor="surface"
           type="submit"
@@ -201,7 +191,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         >
           Enviar
         </Button>
-      </div>
+      </Flex>
     </StyledContactForm>
   )
 }

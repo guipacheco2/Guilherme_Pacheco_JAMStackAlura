@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import { GridContainer } from '../foundation'
 import { CloseIcon } from '../icons'
+import { Flex } from './Flex'
 import { IconButton } from './IconButton'
 
 const StyledModalInner = styled.div(({ theme }) => {
@@ -19,6 +20,13 @@ const StyledModalInner = styled.div(({ theme }) => {
       : theme.colors.primary.dark};
   `
 })
+
+const StyledMotion = styled(motion.div)`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+`
 
 interface StyledModalProps {
   isOpen: boolean
@@ -94,30 +102,24 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
   return (
     <StyledModal isOpen={isOpen}>
       {isOpen && <StyledLockScroll />}
-      <motion.div
+      <StyledMotion
         onClick={handleClickOutsideInnerElement}
         variants={{ open: { y: 0 }, closed: { y: '100%' } }}
         animate={isOpen ? 'open' : 'closed'}
         transition={{ duration: 0.5 }}
-        style={{
-          display: 'flex',
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'flex-end',
-        }}
       >
         <GridContainer maxWidth="sm">
           <StyledModalInner ref={innerElementRef}>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Flex justifyContent="flex-end">
               <IconButton onColor="surface" onClick={onClose}>
                 <CloseIcon />
               </IconButton>
-            </div>
+            </Flex>
 
             {isOpen && children}
           </StyledModalInner>
         </GridContainer>
-      </motion.div>
+      </StyledMotion>
     </StyledModal>
   )
 }
