@@ -183,7 +183,7 @@ export default function HomePage(): JSX.Element {
       </GridContainer>
 
       <Modal onClose={handleCloseContactModal} isOpen={isContactModalOpen}>
-        <ContactForm />
+        <ContactForm onExit={handleCloseContactModal} />
       </Modal>
 
       <Footer>

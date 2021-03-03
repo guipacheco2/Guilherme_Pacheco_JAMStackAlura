@@ -1,11 +1,90 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { ErrorAnimation } from '../animations'
+import { SuccessAnimation } from '../animations/SuccessAnimation'
 import { Button } from '../commons'
 import { TextField } from '../forms'
 import { Typography } from '../foundation'
 import { SendIcon } from '../icons'
 
-const StyledContactForm = styled.div(() => {
+enum FormStates {
+  IDLE,
+  LOADING,
+  DONE,
+  ERROR,
+}
+
+interface RequestSendMessagePayload {
+  name: string
+  email: string
+  message: string
+}
+
+function requestSendMessage({
+  name,
+  email,
+  message,
+}: RequestSendMessagePayload) {
+  return fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, message }),
+  }).then((respostaDoServidor) => {
+    if (respostaDoServidor.ok) {
+      return respostaDoServidor.json()
+    }
+
+    throw new Error(respostaDoServidor.statusText)
+  })
+}
+
+function useContactForm() {
+  const [submissionStatus, setSubmissionStatus] = useState<FormStates>(
+    FormStates.IDLE,
+  )
+
+  const [contactInfo, setContactInfo] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const fieldName = event.target.getAttribute('name')
+
+    setContactInfo({ ...contactInfo, [fieldName]: event.target.value })
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    setSubmissionStatus(FormStates.LOADING)
+
+    requestSendMessage(contactInfo)
+      .then(() => {
+        setSubmissionStatus(FormStates.DONE)
+      })
+      .catch(() => {
+        setSubmissionStatus(FormStates.ERROR)
+      })
+  }
+
+  function resetFormState() {
+    setSubmissionStatus(FormStates.IDLE)
+  }
+
+  return {
+    handleSubmit,
+    contactInfo,
+    handleChange,
+    submissionStatus,
+    resetFormState,
+  }
+}
+
+const StyledContactForm = styled.form(() => {
   return css`
     display: flex;
     flex-direction: column;
@@ -14,9 +93,76 @@ const StyledContactForm = styled.div(() => {
   `
 })
 
-export function ContactForm(): JSX.Element {
+interface ContactFormProps {
+  onExit?: () => void
+}
+
+export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
+  const {
+    handleSubmit,
+    contactInfo,
+    handleChange,
+    submissionStatus,
+    resetFormState,
+  } = useContactForm()
+
+  const isFormInvalid =
+    contactInfo.email.length === 0 ||
+    contactInfo.message.length === 0 ||
+    contactInfo.name.length === 0
+
+  if (submissionStatus === FormStates.DONE) {
+    return (
+      <StyledContactForm>
+        <Typography variant="headline5" onColor="surface" textAlign="center">
+          Mensagem enviada com sucesso!
+        </Typography>
+
+        <div
+          style={{
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
+          <SuccessAnimation />
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button onColor="surface" type="button" onClick={onExit}>
+            Fechar
+          </Button>
+        </div>
+      </StyledContactForm>
+    )
+  }
+
+  if (submissionStatus === FormStates.ERROR) {
+    return (
+      <StyledContactForm>
+        <Typography variant="headline5" onColor="surface" textAlign="center">
+          Falha ao enviar mensagem.
+        </Typography>
+
+        <div
+          style={{
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
+          <ErrorAnimation />
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button onColor="surface" type="button" onClick={resetFormState}>
+            Voltar
+          </Button>
+        </div>
+      </StyledContactForm>
+    )
+  }
+
   return (
-    <StyledContactForm>
+    <StyledContactForm onSubmit={handleSubmit}>
       <Typography variant="headline5" onColor="surface" textAlign="center">
         Envie sua mensagem
       </Typography>
@@ -25,16 +171,17 @@ export function ContactForm(): JSX.Element {
         label="Seu nome"
         placeholder="Seu nome"
         name="name"
-        value={'userInfo.name'}
-        onChange={() => false}
+        onChange={handleChange}
+        value={contactInfo.name}
       />
       <TextField
         id="contactFormEmailInput"
+        onChange={handleChange}
         label="Seu email"
         placeholder="Seu email"
         name="email"
-        value={'userInfo.name'}
-        onChange={() => false}
+        type="email"
+        value={contactInfo.email}
       />
       <TextField
         id="contactFormMessageInput"
@@ -42,11 +189,16 @@ export function ContactForm(): JSX.Element {
         placeholder="Sua mensagem"
         name="message"
         multiline
-        value={'userInfo.name'}
-        onChange={() => false}
+        value={contactInfo.message}
+        onChange={handleChange}
       />
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button onColor="surface" onClick={console.log} endIcon={<SendIcon />}>
+        <Button
+          onColor="surface"
+          type="submit"
+          endIcon={<SendIcon />}
+          disabled={isFormInvalid || submissionStatus === FormStates.LOADING}
+        >
           Enviar
         </Button>
       </div>

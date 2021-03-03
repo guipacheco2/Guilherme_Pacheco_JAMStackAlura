@@ -21,10 +21,16 @@ const StyledButton = styled.button(() => {
     display: flex;
     align-items: center;
     margin: 4px;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+    }
   `
 })
 
 interface ButtonProps {
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   endIcon?: React.ReactNode
   children?: React.ReactNode
@@ -32,13 +38,15 @@ interface ButtonProps {
 }
 
 export function Button({
+  type,
+  disabled,
   onClick,
   onColor,
   endIcon,
   children,
 }: ButtonProps): JSX.Element {
   return (
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} type={type} disabled={disabled}>
       <Typography onColor={onColor} variant="button">
         {children}
       </Typography>

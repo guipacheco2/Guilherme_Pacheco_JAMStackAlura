@@ -114,7 +114,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
               </IconButton>
             </div>
 
-            {children}
+            {isOpen && children}
           </StyledModalInner>
         </GridContainer>
       </motion.div>

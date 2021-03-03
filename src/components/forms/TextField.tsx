@@ -46,6 +46,7 @@ interface TextFieldProps {
   label: string
   placeholder: string
   name: string
+  type?: string
   multiline?: boolean
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -56,6 +57,7 @@ interface TextFieldProps {
 export function TextField({
   id,
   label,
+  type = 'text',
   placeholder,
   name,
   multiline,
@@ -88,7 +90,7 @@ export function TextField({
       ) : (
         <StyledInput
           as="input"
-          type="text"
+          type={type}
           id={id}
           placeholder={placeholder}
           name={name}
