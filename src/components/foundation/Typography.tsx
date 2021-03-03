@@ -10,6 +10,7 @@ import {
 } from '../../theme'
 
 export interface StyledTypographyProps {
+  htmlFor?: string
   variant:
     | TypographyVariantKeys
     | { xs: TypographyVariantKeys; md: TypographyVariantKeys }
@@ -37,9 +38,13 @@ const StyledTypography = styled.span<StyledTypographyProps>(
 
 interface TypographyProps<C extends React.ElementType = React.ElementType>
   extends StyledTypographyProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   as?: C
 }
+
+export type TypographyPropsGeneric<
+  C extends React.ElementType
+> = TypographyProps<C> & Omit<React.ComponentProps<C>, keyof TypographyProps>
 
 export function Typography<C extends React.ElementType = 'span'>({
   as,
@@ -47,12 +52,13 @@ export function Typography<C extends React.ElementType = 'span'>({
   onColor,
   textAlign,
   children,
-}: TypographyProps<C> &
-  Omit<React.ComponentProps<C>, keyof TypographyProps>): JSX.Element {
+  htmlFor,
+}: TypographyPropsGeneric<C>): JSX.Element {
   return (
     <StyledTypography
       as={as as never}
       variant={variant}
+      htmlFor={htmlFor}
       onColor={onColor}
       textAlign={textAlign}
     >

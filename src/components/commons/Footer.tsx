@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const StyledFooter = styled.div(({ theme }) => {
+const StyledFooter = styled.footer(({ theme }) => {
   return css({
     display: 'flex',
     justifyContent: 'center',

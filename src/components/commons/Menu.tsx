@@ -5,7 +5,7 @@ interface StyledMenuProps {
   size: 'normal' | 'small'
 }
 
-const StyledMenu = styled.div<StyledMenuProps>(({ size, theme }) => {
+const StyledMenu = styled.nav<StyledMenuProps>(({ size, theme }) => {
   return css({
     height: size === 'normal' ? '64px' : '48px',
     backgroundColor: theme.colors.primary.dark,

@@ -16,6 +16,8 @@
     "test:linters": "yarn format:check && yarn lint:check"
   },
   "dependencies": {
+    "@crello/react-lottie": "^0.0.11",
+    "framer-motion": "^3.9.1",
     "next": "^10.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

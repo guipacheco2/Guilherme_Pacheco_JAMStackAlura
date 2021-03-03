@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Button,
   Card,
   CardContent,
   CardImage,
@@ -7,7 +8,9 @@ import {
   CardText,
   CardTitle,
   Footer,
+  GridCol,
   GridContainer,
+  GridRow,
   Header,
   HeaderCover,
   HeaderIllustration,
@@ -16,12 +19,15 @@ import {
   Menu,
   MenuItem,
   MenuSpacer,
+  Modal,
   Page,
   SectionTitle,
   SocialMediaIcon,
   Typography,
+  useModal,
 } from '../components'
 import {
+  AddCircleOutlineIcon,
   BrightnessDarkIcon,
   BrightnessLightIcon,
   GithubIcon,
@@ -30,6 +36,7 @@ import {
 } from '../components/icons'
 import { BookshelfIllustration } from '../components/illustrations/BookshelfIllustration'
 import { ProgrammingIllustration } from '../components/illustrations/ProgrammingIllustration'
+import { ContactForm } from '../components/patterns'
 import { useColorSchema, useToggleColorSchema } from '../theme'
 
 const projects = [
@@ -46,6 +53,12 @@ export default function HomePage(): JSX.Element {
   function handleClickBrightnessButton() {
     toggleColorSchema()
   }
+
+  const [
+    isContactModalOpen,
+    handleOpenContactModal,
+    handleCloseContactModal,
+  ] = useModal()
 
   return (
     <Page>
@@ -89,12 +102,15 @@ export default function HomePage(): JSX.Element {
               </Typography>
             </MenuItem>
             <MenuItem>
-              <Typography as="a" onColor="primary" variant="button">
+              <Button onColor="primary" onClick={handleOpenContactModal}>
                 Contato
-              </Typography>
+              </Button>
             </MenuItem>
             <MenuItem>
-              <IconButton onClick={handleClickBrightnessButton}>
+              <IconButton
+                onColor="primary"
+                onClick={handleClickBrightnessButton}
+              >
                 {colorSchema === 'light' ? (
                   <BrightnessDarkIcon />
                 ) : (
@@ -148,7 +164,27 @@ export default function HomePage(): JSX.Element {
             )
           })}
         </CardList>
+
+        <GridRow>
+          <GridCol
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Button
+              onColor="surface"
+              onClick={handleOpenContactModal}
+              endIcon={<AddCircleOutlineIcon />}
+            >
+              Entre em contato
+            </Button>
+          </GridCol>
+        </GridRow>
       </GridContainer>
+
+      <Modal onClose={handleCloseContactModal} isOpen={isContactModalOpen}>
+        <ContactForm onExit={handleCloseContactModal} />
+      </Modal>
 
       <Footer>
         <Menu size="small">

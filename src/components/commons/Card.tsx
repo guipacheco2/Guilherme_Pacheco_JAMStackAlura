@@ -6,7 +6,7 @@ interface StyledCardProps {
   featured?: boolean
 }
 
-const StyledCard = styled.div<StyledCardProps>(({ featured }) => {
+const StyledCard = styled.section<StyledCardProps>(({ featured }) => {
   return css`
     flex: 1;
     padding: 12px;
