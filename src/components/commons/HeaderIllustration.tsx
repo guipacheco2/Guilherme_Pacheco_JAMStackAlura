@@ -6,7 +6,7 @@ interface StyledHeaderIllustrationProps {
   position: 'left' | 'right'
 }
 
-const StyledHeaderIllustration = styled.div<StyledHeaderIllustrationProps>(
+const StyledHeaderIllustration = styled.figure<StyledHeaderIllustrationProps>(
   ({ theme, position }) => {
     return css`
       position: absolute;

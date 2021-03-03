@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const StyledHeader = styled.div(() => {
+const StyledHeader = styled.header(() => {
   return css({
     display: 'flex',
     flexDirection: 'column',
