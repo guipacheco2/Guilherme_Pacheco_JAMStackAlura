@@ -1,10 +1,8 @@
 import { GetStaticProps } from 'next'
-import React from 'react'
+import { Error404Screen } from '../components/screens'
 import { withWebsitePage } from '../components/wrappers'
 
-export default withWebsitePage(function Error404(): JSX.Element {
-  return <div>Error 404</div>
-})
+export default withWebsitePage(Error404Screen)
 
 export const getStaticProps: GetStaticProps = async () => {
   return {

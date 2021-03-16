@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { ErrorAnimation } from '../animations'
-import { SuccessAnimation } from '../animations/SuccessAnimation'
+import { ErrorAnimation, SuccessAnimation } from '../animations'
 import { Button, Flex } from '../commons'
 import { TextField } from '../forms'
 import { Typography } from '../foundation'
