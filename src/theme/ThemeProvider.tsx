@@ -1,4 +1,5 @@
-import React from 'react'
+import Head from 'next/head'
+import React, { Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 import {
   ColorSchemaContextProvider,
@@ -28,8 +29,17 @@ export function CustomThemeProvider({
   children,
 }: ThemeProviderProps): JSX.Element {
   return (
-    <ColorSchemaContextProvider>
-      <ThemeProviderWithColorMode>{children}</ThemeProviderWithColorMode>
-    </ColorSchemaContextProvider>
+    <Fragment>
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <ColorSchemaContextProvider>
+        <ThemeProviderWithColorMode>{children}</ThemeProviderWithColorMode>
+      </ColorSchemaContextProvider>
+    </Fragment>
   )
 }
