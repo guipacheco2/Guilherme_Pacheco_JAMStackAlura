@@ -35,6 +35,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
         >
           <img
             src="https://avatars.githubusercontent.com/u/583094"
+            loading="lazy"
             style={{ maxWidth: '200px', borderRadius: '100%' }}
           />
         </GridCol>

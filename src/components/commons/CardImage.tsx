@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledCardImage = styled.div`
@@ -14,14 +14,11 @@ const StyledImage = styled.img`
   object-fit: cover;
 `
 
-export function CardImage(): JSX.Element {
-  // random image with different sizes
-  const src = useMemo(() => {
-    return `https://source.unsplash.com/collection/people/${
-      300 + Math.floor(Math.random() * 100)
-    }x${300 + Math.floor(Math.random() * 100)}`
-  }, [])
+interface CardImageProps {
+  src: string
+}
 
+export function CardImage({ src }: CardImageProps): JSX.Element {
   return (
     <StyledCardImage>
       <StyledImage src={src} loading="lazy" />

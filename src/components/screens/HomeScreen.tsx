@@ -13,14 +13,17 @@ import { GridCol, GridContainer, GridRow, Typography } from '../foundation'
 import { AddCircleOutlineIcon } from '../icons'
 import { useWebsitePageContext } from '../wrappers'
 
-const projects = [
-  { id: 1, title: 'Projeto Report', description: 'Lorem', featured: false },
-  { id: 2, title: 'Projeto Report', description: 'Lorem', featured: false },
-  { id: 3, title: 'Projeto Report', description: 'Lorem', featured: false },
-  { id: 4, title: 'Projeto Report', description: 'Lorem', featured: true },
-]
+export interface HomeScreenProps {
+  projects: {
+    image: string
+    featured: boolean
+    title: string
+    description: string
+    link: string
+  }[]
+}
 
-export function HomeScreen(): JSX.Element {
+export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
   const { handleOpenContactModal } = useWebsitePageContext()
 
   return (
@@ -38,9 +41,10 @@ export function HomeScreen(): JSX.Element {
 
       <CardList>
         {projects.map((project) => {
+          // TODO: add link to project/project.slug
           return (
-            <Card featured={project.featured} key={project.id}>
-              <CardImage />
+            <Card featured={project.featured} key={project.title}>
+              <CardImage src={project.image} />
 
               <CardContent>
                 <CardTitle>
