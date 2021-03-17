@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconButton, SectionTitle } from '../commons'
+import { Dd, Dl, Dt, IconButton, SectionTitle, StyledLink } from '../commons'
 import { GridCol, GridContainer, GridRow, Typography } from '../foundation'
 import { AddCircleOutlineIcon } from '../icons'
 import { useWebsitePageContext } from '../wrappers'
@@ -40,7 +40,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
         </GridCol>
       </GridRow>
 
-      <GridRow>
+      <GridRow marginTop="16px">
         <GridCol
           alignItems="center"
           justifyContent="center"
@@ -54,10 +54,9 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
 
       <GridRow>
         <GridCol
-          alignItems="center"
-          justifyContent="center"
-          size={{ xs: 12, sm: 6 }}
-          flexDirection="column"
+          offset={{ xs: 0, md: 3, lg: 4 }}
+          size={{ xs: 12, md: 3, lg: 2 }}
+          marginTop="16px"
         >
           <Typography onColor="background" as="p" variant="bodyText2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
@@ -68,12 +67,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
             felis non, eleifend congue ante.
           </Typography>
         </GridCol>
-        <GridCol
-          alignItems="center"
-          justifyContent="center"
-          size={{ xs: 12, sm: 6 }}
-          flexDirection="column"
-        >
+        <GridCol marginTop="16px" size={{ xs: 12, md: 3, lg: 2 }}>
           <Typography onColor="background" as="p" variant="bodyText2">
             Fusce vitae ante ut sapien posuere elementum non sit amet purus.
             Integer vulputate pharetra tincidunt. Maecenas quis rutrum urna. Sed
@@ -97,19 +91,29 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
 
       <GridRow>
         <GridCol
-          alignItems="center"
-          justifyContent="center"
           flexDirection="column"
+          offset={{ xs: 0, md: 3, lg: 4 }}
+          size={{ xs: 12, md: 6, lg: 4 }}
         >
           {repositories.map((repository) => (
-            <dl key={repository.url}>
-              <dt>{repository.name}</dt>
-              <dd>
-                <a href={repository.url} target="_blank" rel="noreferrer">
-                  {repository.url}
-                </a>
-              </dd>
-            </dl>
+            <Dl key={repository.url}>
+              <Dt>
+                <Typography variant="bodyText1" onColor="surface">
+                  {repository.name}
+                </Typography>
+              </Dt>
+              <Dd>
+                <StyledLink
+                  href={repository.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Typography variant="caption" onColor="surface">
+                    {repository.url}
+                  </Typography>
+                </StyledLink>
+              </Dd>
+            </Dl>
           ))}
         </GridCol>
       </GridRow>

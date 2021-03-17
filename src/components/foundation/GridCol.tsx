@@ -52,11 +52,13 @@ export function GridCol({
   marginTop,
   children,
   size,
+  offset,
 }: GridColProps): JSX.Element {
   return (
     <StyledGridCol
       alignItems={alignItems}
       size={size}
+      offset={offset}
       justifyContent={justifyContent}
       flexDirection={flexDirection}
       marginTop={marginTop}

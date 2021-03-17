@@ -8,6 +8,7 @@ import {
   ResponsiveBreakpoints,
   TypographyVariantKeys,
 } from '../../theme'
+import { Link } from '../commons'
 
 export interface StyledTypographyProps {
   htmlFor?: string
@@ -40,6 +41,7 @@ interface TypographyProps<C extends React.ElementType = React.ElementType>
   extends StyledTypographyProps {
   children?: React.ReactNode
   as?: C
+  href?: string
 }
 
 export type TypographyPropsGeneric<
@@ -53,7 +55,24 @@ export function Typography<C extends React.ElementType = 'span'>({
   textAlign,
   children,
   htmlFor,
+  href,
 }: TypographyPropsGeneric<C>): JSX.Element {
+  if (href) {
+    return (
+      <Link href={href}>
+        <StyledTypography
+          as={as as never}
+          variant={variant}
+          htmlFor={htmlFor}
+          onColor={onColor}
+          textAlign={textAlign}
+        >
+          {children}
+        </StyledTypography>
+      </Link>
+    )
+  }
+
   return (
     <StyledTypography
       as={as as never}

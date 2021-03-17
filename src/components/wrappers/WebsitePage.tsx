@@ -7,6 +7,7 @@ import {
   HeaderCover,
   HeaderIllustration,
   IconButton,
+  Link,
   Logo,
   Menu,
   MenuItem,
@@ -102,13 +103,13 @@ export function withWebsitePage<Props>(
           <Menu size="normal">
             <GridContainer alignItems="center" display="flex">
               <MenuItem>
-                <a>
+                <Link href="/">
                   <Logo />
-                </a>
+                </Link>
               </MenuItem>
               <MenuSpacer />
               <MenuItem>
-                <Typography as="a" onColor="primary" variant="button">
+                <Typography href="/about" onColor="primary" variant="button">
                   Sobre mim
                 </Typography>
               </MenuItem>

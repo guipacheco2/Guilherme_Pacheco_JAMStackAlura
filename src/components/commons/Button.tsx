@@ -21,6 +21,10 @@ const StyledButton = styled.button(() => {
     display: flex;
     align-items: center;
     margin: 4px;
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
     &:disabled {
       cursor: not-allowed;
       opacity: 0.2;
