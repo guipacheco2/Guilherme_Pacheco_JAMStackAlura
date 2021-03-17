@@ -2,7 +2,7 @@
   "projects": [
     {
       "image": "https://source.unsplash.com/collection/people/300x300",
-      "featured": true,
+      "featured": false,
       "title": "Legolas",
       "slug": "legolas",
       "description": "They're taking the hobbits to Isengard",
@@ -26,7 +26,7 @@
     },
     {
       "image": "https://source.unsplash.com/collection/people/300x303",
-      "featured": false,
+      "featured": true,
       "title": "Otaco",
       "slug": "otaco",
       "description": "Corre que o otaco tá puto",

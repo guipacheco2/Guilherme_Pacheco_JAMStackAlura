@@ -7,6 +7,7 @@ import {
   CardList,
   CardText,
   CardTitle,
+  Link,
   SectionTitle,
 } from '../commons'
 import { GridCol, GridContainer, GridRow, Typography } from '../foundation'
@@ -20,6 +21,7 @@ export interface HomeScreenProps {
     title: string
     description: string
     link: string
+    slug: string
   }[]
 }
 
@@ -41,9 +43,13 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
 
       <CardList>
         {projects.map((project) => {
-          // TODO: add link to project/project.slug
           return (
-            <Card featured={project.featured} key={project.title}>
+            <Card
+              as={Link}
+              featured={project.featured}
+              key={project.title}
+              href={`/project/${project.slug}`}
+            >
               <CardImage src={project.image} />
 
               <CardContent>

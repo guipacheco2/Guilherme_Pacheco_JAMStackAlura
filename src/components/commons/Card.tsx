@@ -52,13 +52,22 @@ const StyledCardInner = styled.div<StyledCardInnerProps>(
   },
 )
 
-interface CardProps extends StyledCardProps {
+interface CardProps<C> extends StyledCardProps {
+  as?: C
   children?: React.ReactNode
 }
 
-export function Card({ featured, children }: CardProps): JSX.Element {
+export type CardPropsGeneric<C extends React.ElementType> = CardProps<C> &
+  Omit<React.ComponentProps<C>, keyof CardProps<C>>
+
+export function Card<C extends React.ElementType>({
+  as,
+  featured,
+  children,
+  ...otherProps
+}: CardPropsGeneric<C>): JSX.Element {
   return (
-    <StyledCard featured={featured}>
+    <StyledCard as={as as never} featured={featured} {...otherProps}>
       <StyledCardInner featured={featured}>{children}</StyledCardInner>
     </StyledCard>
   )
