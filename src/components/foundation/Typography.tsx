@@ -42,6 +42,7 @@ interface TypographyProps<C extends React.ElementType = React.ElementType>
   as?: C
   children?: React.ReactNode
   href?: string
+  role?: string
 }
 
 export type TypographyPropsGeneric<
@@ -53,6 +54,7 @@ export function Typography<C extends React.ElementType = 'span'>({
   children,
   href,
   htmlFor,
+  role,
   surfaceColor,
   textAlign,
   variant,
@@ -66,6 +68,7 @@ export function Typography<C extends React.ElementType = 'span'>({
           htmlFor={htmlFor}
           surfaceColor={surfaceColor}
           textAlign={textAlign}
+          role={role}
         >
           {children}
         </StyledTypography>
@@ -78,6 +81,7 @@ export function Typography<C extends React.ElementType = 'span'>({
       as={as as never}
       variant={variant}
       htmlFor={htmlFor}
+      role={role}
       surfaceColor={surfaceColor}
       textAlign={textAlign}
     >

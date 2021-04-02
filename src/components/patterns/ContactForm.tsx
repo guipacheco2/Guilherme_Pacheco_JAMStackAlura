@@ -64,6 +64,7 @@ export function ContactForm({
           variant="headline5"
           surfaceColor="surface"
           textAlign="center"
+          role="alert"
         >
           Mensagem enviada com sucesso!
         </Typography>
@@ -86,6 +87,7 @@ export function ContactForm({
       <StyledContactForm>
         <Typography
           variant="headline5"
+          role="alert"
           surfaceColor="surface"
           textAlign="center"
         >
