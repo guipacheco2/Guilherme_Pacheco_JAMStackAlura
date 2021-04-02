@@ -62,8 +62,8 @@ export type CardPropsGeneric<C extends React.ElementType> = CardProps<C> &
 
 export function Card<C extends React.ElementType>({
   as,
-  featured,
   children,
+  featured,
   ...otherProps
 }: CardPropsGeneric<C>): JSX.Element {
   return (

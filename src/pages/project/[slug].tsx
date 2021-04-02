@@ -18,10 +18,10 @@ export const getStaticProps: GetStaticProps<ProjectDetailScreenProps> = async ({
 
   return {
     props: {
+      project,
       seoProps: {
         headTitle: 'Project detail',
       },
-      project,
     },
   }
 }
@@ -34,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   return {
-    paths,
     fallback: false,
+    paths,
   }
 }

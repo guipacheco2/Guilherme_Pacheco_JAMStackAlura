@@ -61,8 +61,8 @@ const StyledModal = styled.div<StyledModalProps>`
 `
 
 interface ModalProps extends StyledModalProps {
-  onClose: () => void
   children: React.ReactNode
+  onClose: () => void
 }
 
 const StyledLockScroll = createGlobalStyle`
@@ -82,7 +82,7 @@ export function useModal(
   return [isOpen, () => setIsOpen(true), () => setIsOpen(false)]
 }
 
-export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
+export function Modal({ children, isOpen, onClose }: ModalProps): JSX.Element {
   const innerElementRef = useRef<HTMLDivElement>(null)
 
   function handleClickOutsideInnerElement(
@@ -104,7 +104,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps): JSX.Element {
       {isOpen && <StyledLockScroll />}
       <StyledMotion
         onClick={handleClickOutsideInnerElement}
-        variants={{ open: { y: 0 }, closed: { y: '100%' } }}
+        variants={{ closed: { y: '100%' }, open: { y: 0 } }}
         animate={isOpen ? 'open' : 'closed'}
         transition={{ duration: 0.5 }}
       >

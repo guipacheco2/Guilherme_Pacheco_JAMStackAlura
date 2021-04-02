@@ -7,7 +7,7 @@ export function ErrorAnimation(): JSX.Element {
     <Lottie
       width="150px"
       height="150px"
-      config={{ animationData: errorAnimation, loop: false, autoplay: true }}
+      config={{ animationData: errorAnimation, autoplay: true, loop: false }}
     />
   )
 }

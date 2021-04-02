@@ -12,15 +12,15 @@ import { Link } from '../commons'
 
 export interface StyledTypographyProps {
   htmlFor?: string
-  variant:
-    | TypographyVariantKeys
-    | { xs: TypographyVariantKeys; md: TypographyVariantKeys }
   onColor: ColorKeys
   textAlign?: ResponsiveBreakpoints<CSSProperties['textAlign']>
+  variant:
+    | TypographyVariantKeys
+    | { md: TypographyVariantKeys; xs: TypographyVariantKeys }
 }
 
 const StyledTypography = styled.span<StyledTypographyProps>(
-  ({ variant, theme, onColor, textAlign }) => {
+  ({ onColor, textAlign, theme, variant }) => {
     return css`
       ${() => {
         if (typeof variant === 'string') {
@@ -39,8 +39,8 @@ const StyledTypography = styled.span<StyledTypographyProps>(
 
 interface TypographyProps<C extends React.ElementType = React.ElementType>
   extends StyledTypographyProps {
-  children?: React.ReactNode
   as?: C
+  children?: React.ReactNode
   href?: string
 }
 
@@ -50,12 +50,12 @@ export type TypographyPropsGeneric<
 
 export function Typography<C extends React.ElementType = 'span'>({
   as,
-  variant,
+  children,
+  href,
+  htmlFor,
   onColor,
   textAlign,
-  children,
-  htmlFor,
-  href,
+  variant,
 }: TypographyPropsGeneric<C>): JSX.Element {
   if (href) {
     return (

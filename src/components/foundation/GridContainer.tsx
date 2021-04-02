@@ -5,37 +5,29 @@ import {
   propsToStyle,
   ResponsiveBreakpoints,
 } from '../../theme'
-import { BreakpointKeys } from '../../theme/breakpoints'
+import { BreakpointKeys, breakpointNames } from '../../theme/breakpoints'
 
 export interface StyledGridContainerProps {
-  display?: ResponsiveBreakpoints<CSSProperties['display']>
   alignItems?: ResponsiveBreakpoints<CSSProperties['alignItems']>
-  marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
+  display?: ResponsiveBreakpoints<CSSProperties['display']>
   flex?: ResponsiveBreakpoints<CSSProperties['flex']>
+  marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
   maxWidth?: BreakpointKeys
 }
 
 const StyledGridContainer = styled.div<StyledGridContainerProps>(
-  ({ display, marginTop, flex, alignItems, theme, maxWidth = 'xl' }) => {
-    const breakpointIndex = Object.keys(theme.breakpoints).indexOf(maxWidth)
+  ({ alignItems, display, flex, marginTop, maxWidth = 'xl', theme }) => {
+    const breakpointIndex = breakpointNames.indexOf(maxWidth)
 
     return css`
       width: 100%;
       margin-right: auto;
       margin-left: auto;
       ${breakpointsMedia({
-        xs:
-          breakpointIndex >= 0
+        lg:
+          breakpointIndex >= 3
             ? css`
-                max-width: initial;
-                padding-right: 16px;
-                padding-left: 16px;
-              `
-            : css``,
-        sm:
-          breakpointIndex >= 1
-            ? css`
-                max-width: ${theme.breakpoints.sm}px;
+                max-width: ${theme.breakpoints.lg}px;
                 padding-right: 24px;
                 padding-left: 24px;
               `
@@ -48,10 +40,10 @@ const StyledGridContainer = styled.div<StyledGridContainerProps>(
                 padding-left: 24px;
               `
             : css``,
-        lg:
-          breakpointIndex >= 3
+        sm:
+          breakpointIndex >= 1
             ? css`
-                max-width: ${theme.breakpoints.lg}px;
+                max-width: ${theme.breakpoints.sm}px;
                 padding-right: 24px;
                 padding-left: 24px;
               `
@@ -64,8 +56,16 @@ const StyledGridContainer = styled.div<StyledGridContainerProps>(
                 padding-left: 24px;
               `
             : css``,
+        xs:
+          breakpointIndex >= 0
+            ? css`
+                max-width: initial;
+                padding-right: 16px;
+                padding-left: 16px;
+              `
+            : css``,
       })}
-      ${propsToStyle({ display, marginTop, flex, alignItems })}
+      ${propsToStyle({ alignItems, display, flex, marginTop })}
     `
   },
 )
@@ -75,12 +75,12 @@ interface GridContainerProps extends StyledGridContainerProps {
 }
 
 export function GridContainer({
-  flex,
-  display,
-  marginTop,
   alignItems,
-  maxWidth,
   children,
+  display,
+  flex,
+  marginTop,
+  maxWidth,
 }: GridContainerProps): JSX.Element {
   return (
     <StyledGridContainer

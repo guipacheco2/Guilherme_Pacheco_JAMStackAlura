@@ -1,10 +1,10 @@
 export interface Project {
-  image: string
-  featured: boolean
-  title: string
-  slug: string
   description: string
+  featured: boolean
+  image: string
   link: string
+  slug: string
+  title: string
 }
 
 export type Projects = Project[]

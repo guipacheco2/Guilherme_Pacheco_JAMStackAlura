@@ -16,12 +16,12 @@ import { useWebsitePageContext } from '../wrappers'
 
 export interface HomeScreenProps {
   projects: {
-    image: string
-    featured: boolean
-    title: string
     description: string
+    featured: boolean
+    image: string
     link: string
     slug: string
+    title: string
   }[]
 }
 
@@ -34,7 +34,7 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
         <Typography
           onColor="background"
           as="h3"
-          variant={{ xs: 'headline5', md: 'headline4' }}
+          variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
         >
           Projetos

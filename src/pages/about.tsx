@@ -5,9 +5,9 @@ import { withWebsitePage } from '../components/wrappers'
 export default withWebsitePage(AboutScreen)
 
 interface GithubRepository {
-  name: string
-  html_url: string
   fork: boolean
+  html_url: string
+  name: string
   updated_at: string
 }
 
@@ -38,10 +38,10 @@ export const getStaticProps: GetStaticProps<AboutScreenProps> = async () => {
 
   return {
     props: {
+      repositories,
       seoProps: {
         headTitle: 'Sobre mim',
       },
-      repositories,
     },
   }
 }

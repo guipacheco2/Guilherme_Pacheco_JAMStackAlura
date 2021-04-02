@@ -14,22 +14,22 @@ enum FormStates {
 }
 
 interface RequestSendMessagePayload {
-  name: string
   email: string
   message: string
+  name: string
 }
 
 function requestSendMessage({
-  name,
   email,
   message,
+  name,
 }: RequestSendMessagePayload) {
   return fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
-    method: 'POST',
+    body: JSON.stringify({ email, message, name }),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, email, message }),
+    method: 'POST',
   }).then((respostaDoServidor) => {
     if (respostaDoServidor.ok) {
       return respostaDoServidor.json()
@@ -45,9 +45,9 @@ function useContactForm() {
   )
 
   const [contactInfo, setContactInfo] = useState({
-    name: '',
     email: '',
     message: '',
+    name: '',
   })
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -75,11 +75,11 @@ function useContactForm() {
   }
 
   return {
-    handleSubmit,
     contactInfo,
     handleChange,
-    submissionStatus,
+    handleSubmit,
     resetFormState,
+    submissionStatus,
   }
 }
 
@@ -98,11 +98,11 @@ interface ContactFormProps {
 
 export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
   const {
-    handleSubmit,
     contactInfo,
     handleChange,
-    submissionStatus,
+    handleSubmit,
     resetFormState,
+    submissionStatus,
   } = useContactForm()
 
   const isFormInvalid =

@@ -44,24 +44,24 @@ const StyledTextArea = styled(Typography)(({ theme }) => {
 interface TextFieldProps {
   id: string
   label: string
-  placeholder: string
-  name: string
-  type?: string
   multiline?: boolean
+  name: string
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
+  placeholder: string
+  type?: string
   value: string
 }
 
 export function TextField({
   id,
   label,
-  type = 'text',
-  placeholder,
-  name,
   multiline,
+  name,
   onChange,
+  placeholder,
+  type = 'text',
   value,
 }: TextFieldProps): JSX.Element {
   return (

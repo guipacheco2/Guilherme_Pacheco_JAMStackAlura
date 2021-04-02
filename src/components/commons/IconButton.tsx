@@ -7,7 +7,7 @@ interface StyledIconButtonProps {
 }
 
 const StyledIconButton = styled.button<StyledIconButtonProps>(
-  ({ theme, onColor }) => {
+  ({ onColor, theme }) => {
     return css`
       width: 24px;
       height: 24px;
@@ -21,14 +21,14 @@ const StyledIconButton = styled.button<StyledIconButtonProps>(
 )
 
 interface IconButtonProps extends StyledIconButtonProps {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   children?: React.ReactNode
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export function IconButton({
+  children,
   onClick,
   onColor,
-  children,
 }: IconButtonProps): JSX.Element {
   return (
     <StyledIconButton onColor={onColor} onClick={onClick}>

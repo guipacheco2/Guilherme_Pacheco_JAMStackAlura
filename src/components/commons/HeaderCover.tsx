@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components'
 
 const StyledHeaderCover = styled.div(({ theme }) => {
   return css({
-    height: '472px',
     backgroundColor: theme.colors.primary.main,
     display: 'flex',
     flexDirection: 'column',
+    height: '472px',
     justifyContent: 'center',
     position: 'relative',
   })

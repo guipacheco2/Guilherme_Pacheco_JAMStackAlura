@@ -67,7 +67,7 @@ export function withWebsitePage<Props>(
       handleOpenContactModal,
     }
 
-    const { seoProps, headerCover, ...otherProps } = props
+    const { headerCover, seoProps, ...otherProps } = props
 
     return (
       <Page>
@@ -84,7 +84,7 @@ export function withWebsitePage<Props>(
               <Typography
                 onColor="primary"
                 as="h1"
-                variant={{ xs: 'headline4', md: 'headline2' }}
+                variant={{ md: 'headline2', xs: 'headline4' }}
                 textAlign="center"
               >
                 Guilherme Pacheco
@@ -92,7 +92,7 @@ export function withWebsitePage<Props>(
               <Typography
                 onColor="primary"
                 as="h2"
-                variant={{ xs: 'headline5', md: 'headline3' }}
+                variant={{ md: 'headline3', xs: 'headline5' }}
                 textAlign="center"
               >
                 Portfólio

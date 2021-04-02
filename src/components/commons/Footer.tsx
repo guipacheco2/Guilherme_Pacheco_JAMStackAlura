@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components'
 
 const StyledFooter = styled.footer(({ theme }) => {
   return css({
+    backgroundColor: theme.colors.primary.main,
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: theme.colors.primary.main,
     marginTop: 12,
   })
 })
