@@ -46,6 +46,9 @@ interface TextFieldProps {
   label: string
   multiline?: boolean
   name: string
+  onBlur?: (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
@@ -59,6 +62,7 @@ export function TextField({
   label,
   multiline,
   name,
+  onBlur,
   onChange,
   placeholder,
   type = 'text',
@@ -83,6 +87,7 @@ export function TextField({
           onChange={onChange}
           value={value}
           variant="bodyText1"
+          onBlur={onBlur}
           id={id}
           surfaceColor="primary"
           rows={3}
@@ -93,6 +98,7 @@ export function TextField({
           type={type}
           id={id}
           placeholder={placeholder}
+          onBlur={onBlur}
           name={name}
           onChange={onChange}
           value={value}
