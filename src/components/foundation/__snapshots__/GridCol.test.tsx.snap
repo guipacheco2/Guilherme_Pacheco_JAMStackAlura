@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GridCol /> when offset is number 1`] = `
+<body>
+  .c0 {
+  padding-right: 16px;
+  padding-left: 16px;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 8.333333333333334%;
+}
+
+<div>
+    <div
+      class="c0"
+      offset="1"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<GridCol /> when offset is responsive 1`] = `
+<body>
+  .c0 {
+  padding-right: 16px;
+  padding-left: 16px;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (min-width:600px) {
+  .c0 {
+    margin-left: 25%;
+  }
+}
+
+<div>
+    <div
+      class="c0"
+      offset="[object Object]"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<GridCol /> when size is empty 1`] = `
+.c0 {
+  padding-right: 16px;
+  padding-left: 16px;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<body>
+  <div>
+    <div
+      class="c0"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<GridCol /> when size is number 1`] = `
+<body>
+  .c0 {
+  padding-right: 16px;
+  padding-left: 16px;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+<div>
+    <div
+      class="c0"
+      size="12"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<GridCol /> when size is responsive 1`] = `
+<body>
+  .c0 {
+  padding-right: 16px;
+  padding-left: 16px;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (min-width:600px) {
+  .c0 {
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+<div>
+    <div
+      class="c0"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;

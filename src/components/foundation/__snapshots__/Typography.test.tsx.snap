@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Typography /> when href is present 1`] = `
+<body>
+  .c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.c0:hover,
+.c0:focus {
+  opacity: 0.5;
+}
+
+.c1 {
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  color: #FAFAFA;
+}
+
+<div>
+    <a
+      class="c0"
+      href="/xpto"
+    >
+      <span
+        class="c1"
+      >
+        child
+      </span>
+    </a>
+  </div>
+</body>
+`;
+
+exports[`<Typography /> when variant is responsive 1`] = `
+<body>
+  .c0 {
+  color: #FAFAFA;
+}
+
+@media only screen and (min-width:0px) {
+  .c0 {
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-letter-spacing: 0.5px;
+    -moz-letter-spacing: 0.5px;
+    -ms-letter-spacing: 0.5px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .c0 {
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-letter-spacing: 0.25px;
+    -moz-letter-spacing: 0.25px;
+    -ms-letter-spacing: 0.25px;
+    letter-spacing: 0.25px;
+  }
+}
+
+<div>
+    <span
+      class="c0"
+    >
+      child
+    </span>
+  </div>
+</body>
+`;
+
+exports[`<Typography /> when variant is simple 1`] = `
+.c0 {
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  color: #FAFAFA;
+}
+
+<body>
+  <div>
+    <span
+      class="c0"
+    >
+      child
+    </span>
+  </div>
+</body>
+`;

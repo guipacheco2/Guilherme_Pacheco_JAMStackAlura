@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GridContainer /> renders component 1`] = `
+.c0 {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media only screen and (min-width:0px) {
+  .c0 {
+    max-width: initial;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .c0 {
+    max-width: 600px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .c0 {
+    max-width: 1024px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media only screen and (min-width:1440px) {
+  .c0 {
+    max-width: 1440px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media only screen and (min-width:1920px) {
+  .c0 {
+    max-width: 1920px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+<body>
+  <div>
+    <div
+      class="c0"
+    >
+      child
+    </div>
+  </div>
+</body>
+`;
