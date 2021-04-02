@@ -111,7 +111,7 @@ export function Modal({ children, isOpen, onClose }: ModalProps): JSX.Element {
         <GridContainer maxWidth="sm">
           <StyledModalInner ref={innerElementRef}>
             <Flex justifyContent="flex-end">
-              <IconButton onColor="surface" onClick={onClose}>
+              <IconButton surfaceColor="surface" onClick={onClose}>
                 <CloseIcon />
               </IconButton>
             </Flex>

@@ -70,7 +70,7 @@ export function TextField({
         as="label"
         htmlFor={id}
         variant="bodyText1"
-        onColor="background"
+        surfaceColor="background"
       >
         {label}
       </Typography>
@@ -84,7 +84,7 @@ export function TextField({
           value={value}
           variant="bodyText1"
           id={id}
-          onColor="primary"
+          surfaceColor="primary"
           rows={3}
         />
       ) : (
@@ -97,7 +97,7 @@ export function TextField({
           onChange={onChange}
           value={value}
           variant="bodyText1"
-          onColor="primary"
+          surfaceColor="primary"
         />
       )}
     </StyledTextField>

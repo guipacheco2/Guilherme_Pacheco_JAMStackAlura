@@ -18,7 +18,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
     <GridContainer flex={1}>
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
           variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
@@ -47,7 +47,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           justifyContent="center"
           flexDirection="column"
         >
-          <IconButton onColor="surface" onClick={handleOpenContactModal}>
+          <IconButton surfaceColor="surface" onClick={handleOpenContactModal}>
             <AddCircleOutlineIcon />
           </IconButton>
         </GridCol>
@@ -59,7 +59,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           size={{ lg: 2, md: 3, xs: 12 }}
           marginTop="16px"
         >
-          <Typography onColor="background" as="p" variant="bodyText2">
+          <Typography surfaceColor="background" as="p" variant="bodyText2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
             imperdiet urna. Nunc lacinia justo sed augue rutrum cursus. Sed
             venenatis sem in felis efficitur imperdiet. Etiam dignissim neque
@@ -69,7 +69,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           </Typography>
         </GridCol>
         <GridCol marginTop="16px" size={{ lg: 2, md: 3, xs: 12 }}>
-          <Typography onColor="background" as="p" variant="bodyText2">
+          <Typography surfaceColor="background" as="p" variant="bodyText2">
             Fusce vitae ante ut sapien posuere elementum non sit amet purus.
             Integer vulputate pharetra tincidunt. Maecenas quis rutrum urna. Sed
             egestas tortor risus, vitae pretium diam varius eu. Class aptent
@@ -81,7 +81,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
 
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
           variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
@@ -99,7 +99,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           {repositories.map((repository) => (
             <Dl key={repository.url}>
               <Dt>
-                <Typography variant="bodyText1" onColor="surface">
+                <Typography variant="bodyText1" surfaceColor="surface">
                   {repository.name}
                 </Typography>
               </Dt>
@@ -109,7 +109,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Typography variant="caption" onColor="surface">
+                  <Typography variant="caption" surfaceColor="surface">
                     {repository.url}
                   </Typography>
                 </StyledLink>

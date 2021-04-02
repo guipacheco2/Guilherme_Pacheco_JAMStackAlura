@@ -21,7 +21,7 @@ export function ProjectDetailScreen({
     <GridContainer flex={1}>
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
           variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
@@ -46,7 +46,7 @@ export function ProjectDetailScreen({
         >
           <GridRow>
             <GridCol marginTop="16px">
-              <Typography onColor="background" as="p" variant="bodyText2">
+              <Typography surfaceColor="background" as="p" variant="bodyText2">
                 {Array.from({ length: 200 })
                   .map(() => project.description)
                   .join(' ')}
@@ -58,7 +58,7 @@ export function ProjectDetailScreen({
             <GridCol>
               <Dl>
                 <Dt>
-                  <Typography variant="bodyText1" onColor="surface">
+                  <Typography variant="bodyText1" surfaceColor="surface">
                     Visite o site
                   </Typography>
                 </Dt>
@@ -68,7 +68,7 @@ export function ProjectDetailScreen({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Typography variant="caption" onColor="surface">
+                    <Typography variant="caption" surfaceColor="surface">
                       {project.link}
                     </Typography>
                   </StyledLink>

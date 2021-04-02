@@ -113,7 +113,11 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
   if (submissionStatus === FormStates.DONE) {
     return (
       <StyledContactForm>
-        <Typography variant="headline5" onColor="surface" textAlign="center">
+        <Typography
+          variant="headline5"
+          surfaceColor="surface"
+          textAlign="center"
+        >
           Mensagem enviada com sucesso!
         </Typography>
 
@@ -122,7 +126,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         </Flex>
 
         <Flex justifyContent="center">
-          <Button onColor="surface" type="button" onClick={onExit}>
+          <Button surfaceColor="surface" type="button" onClick={onExit}>
             Fechar
           </Button>
         </Flex>
@@ -133,7 +137,11 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
   if (submissionStatus === FormStates.ERROR) {
     return (
       <StyledContactForm>
-        <Typography variant="headline5" onColor="surface" textAlign="center">
+        <Typography
+          variant="headline5"
+          surfaceColor="surface"
+          textAlign="center"
+        >
           Falha ao enviar mensagem.
         </Typography>
 
@@ -142,7 +150,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         </Flex>
 
         <Flex justifyContent="center">
-          <Button onColor="surface" type="button" onClick={resetFormState}>
+          <Button surfaceColor="surface" type="button" onClick={resetFormState}>
             Voltar
           </Button>
         </Flex>
@@ -152,7 +160,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
 
   return (
     <StyledContactForm onSubmit={handleSubmit}>
-      <Typography variant="headline5" onColor="surface" textAlign="center">
+      <Typography variant="headline5" surfaceColor="surface" textAlign="center">
         Envie sua mensagem
       </Typography>
       <TextField
@@ -183,7 +191,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
       />
       <Flex justifyContent="center">
         <Button
-          onColor="surface"
+          surfaceColor="surface"
           type="submit"
           endIcon={<SendIcon />}
           disabled={isFormInvalid || submissionStatus === FormStates.LOADING}

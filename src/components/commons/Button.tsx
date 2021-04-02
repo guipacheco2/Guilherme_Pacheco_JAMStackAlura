@@ -37,7 +37,7 @@ interface ButtonProps {
   disabled?: boolean
   endIcon?: React.ReactNode
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  onColor: ColorKeys
+  surfaceColor: ColorKeys
   type?: 'button' | 'submit' | 'reset'
 }
 
@@ -46,12 +46,12 @@ export function Button({
   disabled,
   endIcon,
   onClick,
-  onColor,
+  surfaceColor,
   type,
 }: ButtonProps): JSX.Element {
   return (
     <StyledButton onClick={onClick} type={type} disabled={disabled}>
-      <Typography onColor={onColor} variant="button">
+      <Typography surfaceColor={surfaceColor} variant="button">
         {children}
       </Typography>
 

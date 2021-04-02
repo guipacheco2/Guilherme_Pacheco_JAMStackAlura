@@ -12,7 +12,7 @@ import { Link } from '../commons'
 
 export interface StyledTypographyProps {
   htmlFor?: string
-  onColor: ColorKeys
+  surfaceColor: ColorKeys
   textAlign?: ResponsiveBreakpoints<CSSProperties['textAlign']>
   variant:
     | TypographyVariantKeys
@@ -20,7 +20,7 @@ export interface StyledTypographyProps {
 }
 
 const StyledTypography = styled.span<StyledTypographyProps>(
-  ({ onColor, textAlign, theme, variant }) => {
+  ({ surfaceColor, textAlign, theme, variant }) => {
     return css`
       ${() => {
         if (typeof variant === 'string') {
@@ -31,7 +31,7 @@ const StyledTypography = styled.span<StyledTypographyProps>(
           createBreakpoints(variant, (v) => theme.typographyVariants[v]),
         )
       }}
-      color: ${theme.colors[onColor].contrastText};
+      color: ${theme.colors[surfaceColor].contrastText};
       ${propsToStyle({ textAlign })}
     `
   },
@@ -53,7 +53,7 @@ export function Typography<C extends React.ElementType = 'span'>({
   children,
   href,
   htmlFor,
-  onColor,
+  surfaceColor,
   textAlign,
   variant,
 }: TypographyPropsGeneric<C>): JSX.Element {
@@ -64,7 +64,7 @@ export function Typography<C extends React.ElementType = 'span'>({
           as={as as never}
           variant={variant}
           htmlFor={htmlFor}
-          onColor={onColor}
+          surfaceColor={surfaceColor}
           textAlign={textAlign}
         >
           {children}
@@ -78,7 +78,7 @@ export function Typography<C extends React.ElementType = 'span'>({
       as={as as never}
       variant={variant}
       htmlFor={htmlFor}
-      onColor={onColor}
+      surfaceColor={surfaceColor}
       textAlign={textAlign}
     >
       {children}

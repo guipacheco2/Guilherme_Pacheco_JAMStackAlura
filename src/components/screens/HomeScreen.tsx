@@ -32,7 +32,7 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
     <GridContainer flex={1}>
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
           variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
@@ -55,7 +55,7 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
               <CardContent>
                 <CardTitle>
                   <Typography
-                    onColor="surface"
+                    surfaceColor="surface"
                     as="h6"
                     variant="headline6"
                     textAlign={project.featured ? 'initial' : 'center'}
@@ -66,7 +66,11 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
 
                 {project.featured && (
                   <CardText>
-                    <Typography onColor="surface" as="p" variant="bodyText1">
+                    <Typography
+                      surfaceColor="surface"
+                      as="p"
+                      variant="bodyText1"
+                    >
                       {project.description}
                     </Typography>
                   </CardText>
@@ -84,7 +88,7 @@ export function HomeScreen({ projects }: HomeScreenProps): JSX.Element {
           flexDirection="column"
         >
           <Button
-            onColor="surface"
+            surfaceColor="surface"
             onClick={handleOpenContactModal}
             endIcon={<AddCircleOutlineIcon />}
           >

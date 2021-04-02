@@ -3,7 +3,7 @@ import { Typography } from '../foundation'
 
 export function Logo(): JSX.Element {
   return (
-    <Typography onColor="primary" variant="button">
+    <Typography surfaceColor="primary" variant="button">
       &lt;ME/&gt;
     </Typography>
   )
