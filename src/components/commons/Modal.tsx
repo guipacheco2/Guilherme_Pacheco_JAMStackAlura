@@ -107,6 +107,7 @@ export function Modal({ children, isOpen, onClose }: ModalProps): JSX.Element {
         variants={{ closed: { y: '100%' }, open: { y: 0 } }}
         animate={isOpen ? 'open' : 'closed'}
         transition={{ duration: 0.5 }}
+        data-testid="modal-overlay"
       >
         <GridContainer maxWidth="sm">
           <StyledModalInner ref={innerElementRef}>
