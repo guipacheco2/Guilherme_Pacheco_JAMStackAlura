@@ -7,10 +7,10 @@ interface StyledMenuProps {
 
 const StyledMenu = styled.nav<StyledMenuProps>(({ size, theme }) => {
   return css({
-    height: size === 'normal' ? '64px' : '48px',
+    alignItems: 'center',
     backgroundColor: theme.colors.primary.dark,
     display: 'flex',
-    alignItems: 'center',
+    height: size === 'normal' ? '64px' : '48px',
   })
 })
 
@@ -18,6 +18,6 @@ interface MenuProps extends StyledMenuProps {
   children?: React.ReactNode
 }
 
-export function Menu({ size, children }: MenuProps): JSX.Element {
+export function Menu({ children, size }: MenuProps): JSX.Element {
   return <StyledMenu size={size}>{children}</StyledMenu>
 }

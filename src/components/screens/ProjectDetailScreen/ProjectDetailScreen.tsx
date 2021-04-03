@@ -5,12 +5,12 @@ import { ProjectDetailScreenImage } from './components'
 
 export interface ProjectDetailScreenProps {
   project: {
-    image: string
-    featured: boolean
-    title: string
-    slug: string
     description: string
+    featured: boolean
+    image: string
     link: string
+    slug: string
+    title: string
   }
 }
 
@@ -21,9 +21,9 @@ export function ProjectDetailScreen({
     <GridContainer flex={1}>
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
-          variant={{ xs: 'headline5', md: 'headline4' }}
+          variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
         >
           {project.title}
@@ -33,22 +33,22 @@ export function ProjectDetailScreen({
       <GridRow>
         <GridCol
           flexDirection="column"
-          size={{ xs: 12, md: 4 }}
+          size={{ md: 4, xs: 12 }}
           marginTop="16px"
         >
           <ProjectDetailScreenImage src={project.image} />
         </GridCol>
 
         <GridCol
-          marginTop={{ xs: '16px', md: 0 }}
-          size={{ xs: 12, md: 8 }}
+          marginTop={{ md: 0, xs: '16px' }}
+          size={{ md: 8, xs: 12 }}
           flexDirection="column"
         >
           <GridRow>
             <GridCol marginTop="16px">
-              <Typography onColor="background" as="p" variant="bodyText2">
+              <Typography surfaceColor="background" as="p" variant="bodyText2">
                 {Array.from({ length: 200 })
-                  .map((_) => project.description)
+                  .map(() => project.description)
                   .join(' ')}
               </Typography>
             </GridCol>
@@ -58,7 +58,7 @@ export function ProjectDetailScreen({
             <GridCol>
               <Dl>
                 <Dt>
-                  <Typography variant="bodyText1" onColor="surface">
+                  <Typography variant="bodyText1" surfaceColor="surface">
                     Visite o site
                   </Typography>
                 </Dt>
@@ -68,7 +68,7 @@ export function ProjectDetailScreen({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Typography variant="caption" onColor="surface">
+                    <Typography variant="caption" surfaceColor="surface">
                       {project.link}
                     </Typography>
                   </StyledLink>

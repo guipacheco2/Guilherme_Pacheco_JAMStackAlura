@@ -67,7 +67,7 @@ export function withWebsitePage<Props>(
       handleOpenContactModal,
     }
 
-    const { seoProps, headerCover, ...otherProps } = props
+    const { headerCover, seoProps, ...otherProps } = props
 
     return (
       <Page>
@@ -82,17 +82,17 @@ export function withWebsitePage<Props>(
                 <ProgrammingIllustration />
               </HeaderIllustration>
               <Typography
-                onColor="primary"
+                surfaceColor="primary"
                 as="h1"
-                variant={{ xs: 'headline4', md: 'headline2' }}
+                variant={{ md: 'headline2', xs: 'headline4' }}
                 textAlign="center"
               >
                 Guilherme Pacheco
               </Typography>
               <Typography
-                onColor="primary"
+                surfaceColor="primary"
                 as="h2"
-                variant={{ xs: 'headline5', md: 'headline3' }}
+                variant={{ md: 'headline3', xs: 'headline5' }}
                 textAlign="center"
               >
                 Portfólio
@@ -109,18 +109,22 @@ export function withWebsitePage<Props>(
               </MenuItem>
               <MenuSpacer />
               <MenuItem>
-                <Typography href="/about" onColor="primary" variant="button">
+                <Typography
+                  href="/about"
+                  surfaceColor="primary"
+                  variant="button"
+                >
                   Sobre mim
                 </Typography>
               </MenuItem>
               <MenuItem>
-                <Button onColor="primary" onClick={handleOpenContactModal}>
+                <Button surfaceColor="primary" onClick={handleOpenContactModal}>
                   Contato
                 </Button>
               </MenuItem>
               <MenuItem>
                 <IconButton
-                  onColor="primary"
+                  surfaceColor="primary"
                   onClick={handleClickBrightnessButton}
                 >
                   {colorSchema === 'light' ? (

@@ -11,7 +11,7 @@ export function Error404Screen(): JSX.Element {
           justifyContent="center"
           flexDirection="column"
         >
-          <Typography onColor="surface" as="h1" variant="headline5">
+          <Typography surfaceColor="surface" as="h1" variant="headline5">
             Página não encontrada
           </Typography>
 

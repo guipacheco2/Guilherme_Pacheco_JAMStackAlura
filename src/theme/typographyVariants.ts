@@ -30,6 +30,27 @@ export type TypographyVariants = Record<
 >
 
 export const typographyVariants: TypographyVariants = {
+  bodyText1: {
+    fontSize: '16px',
+    fontWeight: 400,
+    letterSpacing: 0.5,
+  },
+  bodyText2: {
+    fontSize: '14px',
+    fontWeight: 400,
+    letterSpacing: 0.25,
+  },
+  button: {
+    fontSize: '14px',
+    fontWeight: 500,
+    letterSpacing: 1.25,
+    textTransform: 'uppercase',
+  },
+  caption: {
+    fontSize: '12px',
+    fontWeight: 400,
+    letterSpacing: 0.4,
+  },
   headline1: {
     fontSize: '96px',
     fontWeight: 300,
@@ -58,6 +79,12 @@ export const typographyVariants: TypographyVariants = {
     fontWeight: 500,
     letterSpacing: 0.15,
   },
+  overline: {
+    fontSize: '10px',
+    fontWeight: 400,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
   subtitle1: {
     fontSize: '16px',
     fontWeight: 400,
@@ -67,32 +94,5 @@ export const typographyVariants: TypographyVariants = {
     fontSize: '14px',
     fontWeight: 500,
     letterSpacing: 0.1,
-  },
-  bodyText1: {
-    fontSize: '16px',
-    fontWeight: 400,
-    letterSpacing: 0.5,
-  },
-  bodyText2: {
-    fontSize: '14px',
-    fontWeight: 400,
-    letterSpacing: 0.25,
-  },
-  button: {
-    fontSize: '14px',
-    fontWeight: 500,
-    letterSpacing: 1.25,
-    textTransform: 'uppercase',
-  },
-  caption: {
-    fontSize: '12px',
-    fontWeight: 400,
-    letterSpacing: 0.4,
-  },
-  overline: {
-    fontSize: '10px',
-    fontWeight: 400,
-    letterSpacing: 1.5,
-    textTransform: 'uppercase',
   },
 }

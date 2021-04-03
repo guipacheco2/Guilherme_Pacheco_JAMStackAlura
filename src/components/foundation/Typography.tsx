@@ -12,15 +12,15 @@ import { Link } from '../commons'
 
 export interface StyledTypographyProps {
   htmlFor?: string
+  surfaceColor: ColorKeys
+  textAlign?: ResponsiveBreakpoints<CSSProperties['textAlign']>
   variant:
     | TypographyVariantKeys
-    | { xs: TypographyVariantKeys; md: TypographyVariantKeys }
-  onColor: ColorKeys
-  textAlign?: ResponsiveBreakpoints<CSSProperties['textAlign']>
+    | { md: TypographyVariantKeys; xs: TypographyVariantKeys }
 }
 
 const StyledTypography = styled.span<StyledTypographyProps>(
-  ({ variant, theme, onColor, textAlign }) => {
+  ({ surfaceColor, textAlign, theme, variant }) => {
     return css`
       ${() => {
         if (typeof variant === 'string') {
@@ -31,7 +31,7 @@ const StyledTypography = styled.span<StyledTypographyProps>(
           createBreakpoints(variant, (v) => theme.typographyVariants[v]),
         )
       }}
-      color: ${theme.colors[onColor].contrastText};
+      color: ${theme.colors[surfaceColor].contrastText};
       ${propsToStyle({ textAlign })}
     `
   },
@@ -39,9 +39,10 @@ const StyledTypography = styled.span<StyledTypographyProps>(
 
 interface TypographyProps<C extends React.ElementType = React.ElementType>
   extends StyledTypographyProps {
-  children?: React.ReactNode
   as?: C
+  children?: React.ReactNode
   href?: string
+  role?: string
 }
 
 export type TypographyPropsGeneric<
@@ -50,12 +51,13 @@ export type TypographyPropsGeneric<
 
 export function Typography<C extends React.ElementType = 'span'>({
   as,
-  variant,
-  onColor,
-  textAlign,
   children,
-  htmlFor,
   href,
+  htmlFor,
+  role,
+  surfaceColor,
+  textAlign,
+  variant,
 }: TypographyPropsGeneric<C>): JSX.Element {
   if (href) {
     return (
@@ -64,8 +66,9 @@ export function Typography<C extends React.ElementType = 'span'>({
           as={as as never}
           variant={variant}
           htmlFor={htmlFor}
-          onColor={onColor}
+          surfaceColor={surfaceColor}
           textAlign={textAlign}
+          role={role}
         >
           {children}
         </StyledTypography>
@@ -78,7 +81,8 @@ export function Typography<C extends React.ElementType = 'span'>({
       as={as as never}
       variant={variant}
       htmlFor={htmlFor}
-      onColor={onColor}
+      role={role}
+      surfaceColor={surfaceColor}
       textAlign={textAlign}
     >
       {children}

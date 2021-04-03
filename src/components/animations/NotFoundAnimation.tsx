@@ -7,7 +7,7 @@ export function NotFoundAnimation(): JSX.Element {
     <Lottie
       width="300px"
       height="300px"
-      config={{ animationData: notFoundAnimation, loop: true, autoplay: true }}
+      config={{ animationData: notFoundAnimation, autoplay: true, loop: true }}
     />
   )
 }

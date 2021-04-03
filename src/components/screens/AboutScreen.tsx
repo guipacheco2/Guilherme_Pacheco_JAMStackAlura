@@ -18,9 +18,9 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
     <GridContainer flex={1}>
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
-          variant={{ xs: 'headline5', md: 'headline4' }}
+          variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
         >
           Sobre mim
@@ -36,7 +36,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           <img
             src="https://avatars.githubusercontent.com/u/583094"
             loading="lazy"
-            style={{ maxWidth: '200px', borderRadius: '100%' }}
+            style={{ borderRadius: '100%', maxWidth: '200px' }}
           />
         </GridCol>
       </GridRow>
@@ -47,7 +47,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           justifyContent="center"
           flexDirection="column"
         >
-          <IconButton onColor="surface" onClick={handleOpenContactModal}>
+          <IconButton surfaceColor="surface" onClick={handleOpenContactModal}>
             <AddCircleOutlineIcon />
           </IconButton>
         </GridCol>
@@ -55,11 +55,11 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
 
       <GridRow>
         <GridCol
-          offset={{ xs: 0, md: 3, lg: 4 }}
-          size={{ xs: 12, md: 3, lg: 2 }}
+          offset={{ lg: 4, md: 3, xs: 0 }}
+          size={{ lg: 2, md: 3, xs: 12 }}
           marginTop="16px"
         >
-          <Typography onColor="background" as="p" variant="bodyText2">
+          <Typography surfaceColor="background" as="p" variant="bodyText2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
             imperdiet urna. Nunc lacinia justo sed augue rutrum cursus. Sed
             venenatis sem in felis efficitur imperdiet. Etiam dignissim neque
@@ -68,8 +68,8 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
             felis non, eleifend congue ante.
           </Typography>
         </GridCol>
-        <GridCol marginTop="16px" size={{ xs: 12, md: 3, lg: 2 }}>
-          <Typography onColor="background" as="p" variant="bodyText2">
+        <GridCol marginTop="16px" size={{ lg: 2, md: 3, xs: 12 }}>
+          <Typography surfaceColor="background" as="p" variant="bodyText2">
             Fusce vitae ante ut sapien posuere elementum non sit amet purus.
             Integer vulputate pharetra tincidunt. Maecenas quis rutrum urna. Sed
             egestas tortor risus, vitae pretium diam varius eu. Class aptent
@@ -81,9 +81,9 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
 
       <SectionTitle>
         <Typography
-          onColor="background"
+          surfaceColor="background"
           as="h3"
-          variant={{ xs: 'headline5', md: 'headline4' }}
+          variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
         >
           Meus repositórios
@@ -93,13 +93,13 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
       <GridRow>
         <GridCol
           flexDirection="column"
-          offset={{ xs: 0, md: 3, lg: 4 }}
-          size={{ xs: 12, md: 6, lg: 4 }}
+          offset={{ lg: 4, md: 3, xs: 0 }}
+          size={{ lg: 4, md: 6, xs: 12 }}
         >
           {repositories.map((repository) => (
             <Dl key={repository.url}>
               <Dt>
-                <Typography variant="bodyText1" onColor="surface">
+                <Typography variant="bodyText1" surfaceColor="surface">
                   {repository.name}
                 </Typography>
               </Dt>
@@ -109,7 +109,7 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Typography variant="caption" onColor="surface">
+                  <Typography variant="caption" surfaceColor="surface">
                     {repository.url}
                   </Typography>
                 </StyledLink>

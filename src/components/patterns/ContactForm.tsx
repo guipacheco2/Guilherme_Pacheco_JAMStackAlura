@@ -1,87 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
+import { useContactForm } from '../../infra'
+import { requestSendMessage } from '../../services'
 import { ErrorAnimation, SuccessAnimation } from '../animations'
 import { Button, Flex } from '../commons'
 import { TextField } from '../forms'
 import { Typography } from '../foundation'
 import { SendIcon } from '../icons'
-
-enum FormStates {
-  IDLE,
-  LOADING,
-  DONE,
-  ERROR,
-}
-
-interface RequestSendMessagePayload {
-  name: string
-  email: string
-  message: string
-}
-
-function requestSendMessage({
-  name,
-  email,
-  message,
-}: RequestSendMessagePayload) {
-  return fetch('https://contact-form-api-jamstack.herokuapp.com/message', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ name, email, message }),
-  }).then((respostaDoServidor) => {
-    if (respostaDoServidor.ok) {
-      return respostaDoServidor.json()
-    }
-
-    throw new Error(respostaDoServidor.statusText)
-  })
-}
-
-function useContactForm() {
-  const [submissionStatus, setSubmissionStatus] = useState<FormStates>(
-    FormStates.IDLE,
-  )
-
-  const [contactInfo, setContactInfo] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const fieldName = event.target.getAttribute('name')
-
-    setContactInfo({ ...contactInfo, [fieldName]: event.target.value })
-  }
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    setSubmissionStatus(FormStates.LOADING)
-
-    requestSendMessage(contactInfo)
-      .then(() => {
-        setSubmissionStatus(FormStates.DONE)
-      })
-      .catch(() => {
-        setSubmissionStatus(FormStates.ERROR)
-      })
-  }
-
-  function resetFormState() {
-    setSubmissionStatus(FormStates.IDLE)
-  }
-
-  return {
-    handleSubmit,
-    contactInfo,
-    handleChange,
-    submissionStatus,
-    resetFormState,
-  }
-}
 
 const StyledContactForm = styled.form(() => {
   return css`
@@ -94,26 +19,53 @@ const StyledContactForm = styled.form(() => {
 
 interface ContactFormProps {
   onExit?: () => void
+  onSubmit?: (values: Record<string, string>) => void
 }
 
-export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
+export function ContactForm({
+  onExit,
+  onSubmit,
+}: ContactFormProps): JSX.Element {
   const {
-    handleSubmit,
-    contactInfo,
+    handleBlur,
     handleChange,
-    submissionStatus,
+    handleSubmit,
     resetFormState,
-  } = useContactForm()
+    submissionStatus,
+    values,
+  } = useContactForm({
+    initialValues: {
+      email: '',
+      message: '',
+      name: '',
+    },
+    async onSubmit(values) {
+      if (onSubmit) {
+        return onSubmit(values)
+      }
+
+      return requestSendMessage({
+        email: values.email,
+        message: values.message,
+        name: values.name,
+      })
+    },
+  })
 
   const isFormInvalid =
-    contactInfo.email.length === 0 ||
-    contactInfo.message.length === 0 ||
-    contactInfo.name.length === 0
+    values.email.length === 0 ||
+    values.message.length === 0 ||
+    values.name.length === 0
 
-  if (submissionStatus === FormStates.DONE) {
+  if (submissionStatus === 'DONE') {
     return (
       <StyledContactForm>
-        <Typography variant="headline5" onColor="surface" textAlign="center">
+        <Typography
+          variant="headline5"
+          surfaceColor="surface"
+          textAlign="center"
+          role="alert"
+        >
           Mensagem enviada com sucesso!
         </Typography>
 
@@ -122,7 +74,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         </Flex>
 
         <Flex justifyContent="center">
-          <Button onColor="surface" type="button" onClick={onExit}>
+          <Button surfaceColor="surface" type="button" onClick={onExit}>
             Fechar
           </Button>
         </Flex>
@@ -130,10 +82,15 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
     )
   }
 
-  if (submissionStatus === FormStates.ERROR) {
+  if (submissionStatus === 'ERROR') {
     return (
       <StyledContactForm>
-        <Typography variant="headline5" onColor="surface" textAlign="center">
+        <Typography
+          variant="headline5"
+          role="alert"
+          surfaceColor="surface"
+          textAlign="center"
+        >
           Falha ao enviar mensagem.
         </Typography>
 
@@ -142,7 +99,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         </Flex>
 
         <Flex justifyContent="center">
-          <Button onColor="surface" type="button" onClick={resetFormState}>
+          <Button surfaceColor="surface" type="button" onClick={resetFormState}>
             Voltar
           </Button>
         </Flex>
@@ -152,7 +109,7 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
 
   return (
     <StyledContactForm onSubmit={handleSubmit}>
-      <Typography variant="headline5" onColor="surface" textAlign="center">
+      <Typography variant="headline5" surfaceColor="surface" textAlign="center">
         Envie sua mensagem
       </Typography>
       <TextField
@@ -161,16 +118,18 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         placeholder="Seu nome"
         name="name"
         onChange={handleChange}
-        value={contactInfo.name}
+        onBlur={handleBlur}
+        value={values.name}
       />
       <TextField
         id="contactFormEmailInput"
         onChange={handleChange}
+        onBlur={handleBlur}
         label="Seu email"
         placeholder="Seu email"
         name="email"
         type="email"
-        value={contactInfo.email}
+        value={values.email}
       />
       <TextField
         id="contactFormMessageInput"
@@ -178,15 +137,16 @@ export function ContactForm({ onExit }: ContactFormProps): JSX.Element {
         placeholder="Sua mensagem"
         name="message"
         multiline
-        value={contactInfo.message}
+        value={values.message}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
       <Flex justifyContent="center">
         <Button
-          onColor="surface"
+          surfaceColor="surface"
           type="submit"
           endIcon={<SendIcon />}
-          disabled={isFormInvalid || submissionStatus === FormStates.LOADING}
+          disabled={isFormInvalid || submissionStatus === 'LOADING'}
         >
           Enviar
         </Button>

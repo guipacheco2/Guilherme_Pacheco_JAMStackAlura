@@ -3,15 +3,15 @@ import styled, { css } from 'styled-components'
 import { ColorKeys } from '../../theme'
 
 interface StyledIconButtonProps {
-  onColor: ColorKeys
+  surfaceColor: ColorKeys
 }
 
 const StyledIconButton = styled.button<StyledIconButtonProps>(
-  ({ theme, onColor }) => {
+  ({ surfaceColor, theme }) => {
     return css`
       width: 24px;
       height: 24px;
-      color: ${theme.colors[onColor].contrastText};
+      color: ${theme.colors[surfaceColor].contrastText};
       background-color: transparent;
       border: none;
       outline: none;
@@ -21,17 +21,17 @@ const StyledIconButton = styled.button<StyledIconButtonProps>(
 )
 
 interface IconButtonProps extends StyledIconButtonProps {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   children?: React.ReactNode
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export function IconButton({
-  onClick,
-  onColor,
   children,
+  onClick,
+  surfaceColor,
 }: IconButtonProps): JSX.Element {
   return (
-    <StyledIconButton onColor={onColor} onClick={onClick}>
+    <StyledIconButton surfaceColor={surfaceColor} onClick={onClick}>
       {children}
     </StyledIconButton>
   )

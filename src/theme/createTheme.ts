@@ -7,20 +7,20 @@ import { typographyVariants, TypographyVariants } from './typographyVariants'
 // https://styled-components.com/docs/api#create-a-declarations-file
 declare module 'styled-components' {
   export interface DefaultTheme {
-    schema: ColorSchemaTypes
     breakpoints: Breakpoints
     colors: Colors
+    schema: ColorSchemaTypes
     typographyVariants: TypographyVariants
   }
 }
 
-const colors = { light, dark }
+const colors = { dark, light }
 
 export function createTheme(colorSchema: ColorSchemaTypes): DefaultTheme {
   return {
-    schema: colorSchema,
     breakpoints,
     colors: colors[colorSchema],
+    schema: colorSchema,
     typographyVariants,
   }
 }

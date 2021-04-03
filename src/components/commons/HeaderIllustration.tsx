@@ -7,7 +7,7 @@ interface StyledHeaderIllustrationProps {
 }
 
 const StyledHeaderIllustration = styled.figure<StyledHeaderIllustrationProps>(
-  ({ theme, position }) => {
+  ({ position, theme }) => {
     return css`
       position: absolute;
       z-index: 0;
@@ -15,14 +15,14 @@ const StyledHeaderIllustration = styled.figure<StyledHeaderIllustrationProps>(
       color: ${theme.colors.primary.dark};
 
       ${breakpointsMedia({
-        xs: css`
-          width: 150px;
+        lg: css`
+          width: 300px;
         `,
         md: css`
           width: 200px;
         `,
-        lg: css`
-          width: 300px;
+        xs: css`
+          width: 150px;
         `,
       })}
 
@@ -48,8 +48,8 @@ interface HeaderIllustrationProps extends StyledHeaderIllustrationProps {
 }
 
 export function HeaderIllustration({
-  position,
   children,
+  position,
 }: HeaderIllustrationProps): JSX.Element {
   return (
     <StyledHeaderIllustration position={position}>

@@ -7,7 +7,7 @@ export function SuccessAnimation(): JSX.Element {
     <Lottie
       width="150px"
       height="150px"
-      config={{ animationData: successAnimation, loop: false, autoplay: true }}
+      config={{ animationData: successAnimation, autoplay: true, loop: false }}
     />
   )
 }

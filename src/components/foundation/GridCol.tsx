@@ -12,16 +12,16 @@ import {
 } from '../../theme'
 
 export interface StyledGridColProps {
-  size?: ResponsiveBreakpoints<number>
-  offset?: ResponsiveBreakpoints<number>
   alignItems?: ResponsiveBreakpoints<CSSProperties['alignItems']>
-  justifyContent?: ResponsiveBreakpoints<CSSProperties['justifyContent']>
   flexDirection?: ResponsiveBreakpoints<CSSProperties['flexDirection']>
+  justifyContent?: ResponsiveBreakpoints<CSSProperties['justifyContent']>
   marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
+  offset?: ResponsiveBreakpoints<number>
+  size?: ResponsiveBreakpoints<number>
 }
 
 const StyledGridCol = styled.div<StyledGridColProps>(
-  ({ alignItems, justifyContent, flexDirection, marginTop }) => {
+  ({ alignItems, flexDirection, justifyContent, marginTop }) => {
     return css`
       padding-right: 16px;
       padding-left: 16px;
@@ -33,8 +33,8 @@ const StyledGridCol = styled.div<StyledGridColProps>(
       ${gridOffset}
       ${propsToStyle({
         alignItems,
-        justifyContent,
         flexDirection,
+        justifyContent,
         marginTop,
       })}
     `
@@ -47,12 +47,12 @@ interface GridColProps extends StyledGridColProps {
 
 export function GridCol({
   alignItems,
-  justifyContent,
-  flexDirection,
-  marginTop,
   children,
-  size,
+  flexDirection,
+  justifyContent,
+  marginTop,
   offset,
+  size,
 }: GridColProps): JSX.Element {
   return (
     <StyledGridCol

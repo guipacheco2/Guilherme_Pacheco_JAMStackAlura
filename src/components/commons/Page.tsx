@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components'
 
 const StyledPage = styled.div(({ theme }) => {
   return css({
+    backgroundColor: theme.colors.background.main,
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    flex: 1,
-    backgroundColor: theme.colors.background.main,
   })
 })
 

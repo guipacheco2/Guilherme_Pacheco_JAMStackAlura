@@ -3,8 +3,8 @@ import styled, { css, CSSProperties } from 'styled-components'
 import { propsToStyle, ResponsiveBreakpoints } from '../../theme'
 
 interface StyledGridRowProps {
-  marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
   fullHeight?: boolean
+  marginTop?: ResponsiveBreakpoints<CSSProperties['marginTop']>
 }
 
 const StyledGridRow = styled.div<StyledGridRowProps>(
@@ -27,9 +27,9 @@ interface GridRowProps extends StyledGridRowProps {
 }
 
 export function GridRow({
+  children,
   fullHeight,
   marginTop,
-  children,
 }: GridRowProps): JSX.Element {
   return (
     <StyledGridRow marginTop={marginTop} fullHeight={fullHeight}>

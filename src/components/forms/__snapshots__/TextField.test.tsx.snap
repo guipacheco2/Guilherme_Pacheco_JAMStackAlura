@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> renders component 1`] = `
+.c0 {
+  width: 100%;
+  border: 1px solid #607D8B;
+  color: #34515E;
+  background-color: #FAFAFA;
+  padding: 12px 16px;
+  margin: 4px 0;
+  outline: 0;
+}
+
+<input
+  class="c0"
+  id="nome"
+  name="nome"
+  placeholder="Nome"
+  type="text"
+  value="Ju"
+/>
+`;

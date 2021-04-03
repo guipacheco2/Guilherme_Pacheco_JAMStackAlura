@@ -44,24 +44,28 @@ const StyledTextArea = styled(Typography)(({ theme }) => {
 interface TextFieldProps {
   id: string
   label: string
-  placeholder: string
-  name: string
-  type?: string
   multiline?: boolean
+  name: string
+  onBlur?: (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
+  placeholder: string
+  type?: string
   value: string
 }
 
 export function TextField({
   id,
   label,
-  type = 'text',
-  placeholder,
-  name,
   multiline,
+  name,
+  onBlur,
   onChange,
+  placeholder,
+  type = 'text',
   value,
 }: TextFieldProps): JSX.Element {
   return (
@@ -70,7 +74,7 @@ export function TextField({
         as="label"
         htmlFor={id}
         variant="bodyText1"
-        onColor="background"
+        surfaceColor="background"
       >
         {label}
       </Typography>
@@ -83,8 +87,9 @@ export function TextField({
           onChange={onChange}
           value={value}
           variant="bodyText1"
+          onBlur={onBlur}
           id={id}
-          onColor="primary"
+          surfaceColor="primary"
           rows={3}
         />
       ) : (
@@ -93,11 +98,12 @@ export function TextField({
           type={type}
           id={id}
           placeholder={placeholder}
+          onBlur={onBlur}
           name={name}
           onChange={onChange}
           value={value}
           variant="bodyText1"
-          onColor="primary"
+          surfaceColor="primary"
         />
       )}
     </StyledTextField>
