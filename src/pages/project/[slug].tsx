@@ -1,20 +1,23 @@
+import { gql } from 'graphql-request'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import {
+  getProjectDetailScreenContent,
   ProjectDetailScreen,
   ProjectDetailScreenProps,
 } from '../../components/screens'
 import { withWebsitePage } from '../../components/wrappers'
-import db from '../../resources/db.json'
-import { Projects } from '../../resources/db.types'
+import { CMSGraphQLClient } from '../../infra'
 
 export default withWebsitePage(ProjectDetailScreen)
 
 export const getStaticProps: GetStaticProps<ProjectDetailScreenProps> = async ({
   params,
+  preview,
 }) => {
-  const projects: Projects = db.projects
-
-  const project = projects.find((project) => project.slug === params.slug)
+  const project = await getProjectDetailScreenContent({
+    id: params.slug as string,
+    preview,
+  })
 
   return {
     props: {
@@ -27,10 +30,22 @@ export const getStaticProps: GetStaticProps<ProjectDetailScreenProps> = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects: Projects = db.projects
+  const response: {
+    allPageProjects: { id: string }[]
+  } = await CMSGraphQLClient({
+    preview: false,
+  }).query({
+    query: gql`
+      query {
+        allPageProjects {
+          id
+        }
+      }
+    `,
+  })
 
-  const paths = projects.map((project) => {
-    return { params: { slug: project.slug } }
+  const paths = response.allPageProjects.map((project) => {
+    return { params: { slug: project.id } }
   })
 
   return {
