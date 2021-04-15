@@ -1,17 +1,25 @@
 import React from 'react'
+import { CMSGraphQLClient, gql } from '../../infra'
 import { Dd, Dl, Dt, IconButton, SectionTitle, StyledLink } from '../commons'
 import { GridCol, GridContainer, GridRow, Typography } from '../foundation'
 import { AddCircleOutlineIcon } from '../icons'
 import { useWebsitePageContext } from '../wrappers'
 
 export interface AboutScreenProps {
+  about: {
+    aboutPart1: string
+    aboutPart2: string
+  }
   repositories: {
     name: string
     url: string
   }[]
 }
 
-export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
+export function AboutScreen({
+  about,
+  repositories,
+}: AboutScreenProps): JSX.Element {
   const { handleOpenContactModal } = useWebsitePageContext()
 
   return (
@@ -60,21 +68,12 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
           marginTop="16px"
         >
           <Typography surfaceColor="background" as="p" variant="bodyText2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
-            imperdiet urna. Nunc lacinia justo sed augue rutrum cursus. Sed
-            venenatis sem in felis efficitur imperdiet. Etiam dignissim neque
-            vel facilisis facilisis. Morbi vel ligula eros. Nulla dictum porta
-            ante, in luctus nulla dapibus quis. Mauris ipsum arcu, dignissim a
-            felis non, eleifend congue ante.
+            {about.aboutPart1}
           </Typography>
         </GridCol>
         <GridCol marginTop="16px" size={{ lg: 2, md: 3, xs: 12 }}>
           <Typography surfaceColor="background" as="p" variant="bodyText2">
-            Fusce vitae ante ut sapien posuere elementum non sit amet purus.
-            Integer vulputate pharetra tincidunt. Maecenas quis rutrum urna. Sed
-            egestas tortor risus, vitae pretium diam varius eu. Class aptent
-            taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-            himenaeos. Morbi eu arcu augue.
+            {about.aboutPart2}
           </Typography>
         </GridCol>
       </GridRow>
@@ -120,4 +119,33 @@ export function AboutScreen({ repositories }: AboutScreenProps): JSX.Element {
       </GridRow>
     </GridContainer>
   )
+}
+
+export async function getAboutScreenContent({
+  preview,
+}: {
+  preview: boolean
+}): Promise<{
+  aboutPart1: string
+  aboutPart2: string
+}> {
+  const response: {
+    portfolioPageAbout: {
+      aboutPart1: string
+      aboutPart2: string
+    }
+  } = await CMSGraphQLClient({
+    preview,
+  }).query({
+    query: gql`
+      query {
+        portfolioPageAbout {
+          aboutPart1
+          aboutPart2
+        }
+      }
+    `,
+  })
+
+  return response.portfolioPageAbout
 }
