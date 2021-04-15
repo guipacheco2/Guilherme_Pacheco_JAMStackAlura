@@ -20,7 +20,9 @@ describe('/pages/home/contactForm', () => {
         .fillContactForm(contactFormSentData)
         .submitContactForm()
 
-      cy.findByText(/mensagem enviada com sucesso!/i).should('be.visible')
+      cy.findByText(/mensagem enviada com sucesso!/i, {
+        timeout: 30000,
+      }).should('be.visible')
 
       cy.wait('@contactFormRequest').then((intercept) => {
         expect(intercept.response.body).to.deep.equal(contactFormSentData)

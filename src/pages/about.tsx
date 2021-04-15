@@ -1,5 +1,9 @@
 import { GetStaticProps } from 'next'
-import { AboutScreen, AboutScreenProps } from '../components/screens'
+import {
+  AboutScreen,
+  AboutScreenProps,
+  getAboutScreenContent,
+} from '../components/screens'
 import { withWebsitePage } from '../components/wrappers'
 
 export default withWebsitePage(AboutScreen)
@@ -11,7 +15,11 @@ interface GithubRepository {
   updated_at: string
 }
 
-export const getStaticProps: GetStaticProps<AboutScreenProps> = async () => {
+export const getStaticProps: GetStaticProps<AboutScreenProps> = async ({
+  preview,
+}) => {
+  const about = await getAboutScreenContent({ preview })
+
   const rawRepositories: GithubRepository[] = await fetch(
     'https://api.github.com/users/guipacheco2/repos',
   ).then((res) => res.json())
@@ -38,6 +46,7 @@ export const getStaticProps: GetStaticProps<AboutScreenProps> = async () => {
 
   return {
     props: {
+      about,
       repositories,
       seoProps: {
         headTitle: 'Sobre mim',

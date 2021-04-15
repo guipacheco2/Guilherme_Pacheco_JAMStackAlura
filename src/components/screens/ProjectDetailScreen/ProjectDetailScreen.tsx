@@ -1,17 +1,24 @@
+import { gql } from 'graphql-request'
 import React from 'react'
+import { CMSGraphQLClient } from '../../../infra'
 import { Dd, Dl, Dt, SectionTitle, StyledLink } from '../../commons'
 import { GridCol, GridContainer, GridRow, Typography } from '../../foundation'
 import { ProjectDetailScreenImage } from './components'
 
-export interface ProjectDetailScreenProps {
-  project: {
-    description: string
-    featured: boolean
-    image: string
-    link: string
-    slug: string
-    title: string
+interface PageProject {
+  id: string
+  projectDescription: string
+  projectImage: {
+    responsiveImage: {
+      src: string
+    }
   }
+  projectLink: string
+  projectTitle: string
+}
+
+export interface ProjectDetailScreenProps {
+  project: PageProject
 }
 
 export function ProjectDetailScreen({
@@ -26,7 +33,7 @@ export function ProjectDetailScreen({
           variant={{ md: 'headline4', xs: 'headline5' }}
           textAlign="center"
         >
-          {project.title}
+          {project.projectTitle}
         </Typography>
       </SectionTitle>
 
@@ -36,7 +43,9 @@ export function ProjectDetailScreen({
           size={{ md: 4, xs: 12 }}
           marginTop="16px"
         >
-          <ProjectDetailScreenImage src={project.image} />
+          <ProjectDetailScreenImage
+            src={project.projectImage.responsiveImage.src}
+          />
         </GridCol>
 
         <GridCol
@@ -47,9 +56,11 @@ export function ProjectDetailScreen({
           <GridRow>
             <GridCol marginTop="16px">
               <Typography surfaceColor="background" as="p" variant="bodyText2">
-                {Array.from({ length: 200 })
-                  .map(() => project.description)
-                  .join(' ')}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: project.projectDescription,
+                  }}
+                />
               </Typography>
             </GridCol>
           </GridRow>
@@ -64,12 +75,12 @@ export function ProjectDetailScreen({
                 </Dt>
                 <Dd>
                   <StyledLink
-                    href={project.link}
+                    href={project.projectLink}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <Typography variant="caption" surfaceColor="surface">
-                      {project.link}
+                      {project.projectLink}
                     </Typography>
                   </StyledLink>
                 </Dd>
@@ -80,4 +91,35 @@ export function ProjectDetailScreen({
       </GridRow>
     </GridContainer>
   )
+}
+
+export async function getProjectDetailScreenContent({
+  id,
+  preview,
+}: {
+  id: string
+  preview: boolean
+}): Promise<PageProject> {
+  const response: { pageProject: PageProject } = await CMSGraphQLClient({
+    preview,
+  }).query({
+    query: gql`
+      query getProject($id: ItemId!) {
+        pageProject(filter: { id: { eq: $id } }) {
+          id
+          projectDescription
+          projectLink
+          projectTitle
+          projectImage {
+            responsiveImage(imgixParams: { fm: jpg, h: 300 }) {
+              src
+            }
+          }
+        }
+      }
+    `,
+    variables: { id },
+  })
+
+  return response.pageProject
 }
